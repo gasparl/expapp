@@ -1,0 +1,1 @@
+This is a boilerplate project connected to the tutorial "Creating Web Applications for Online Psychological Experiments: A Hands-On Technical Guide Including a Boilerplate". It is intended as a boilerplate (template) for creating web applications for online psychological experiments via the HTML/CSS/JavaScript framework from scratch, without any additional software.
