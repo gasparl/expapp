@@ -122,7 +122,7 @@ const load_language = function() {
         console.log('Language defaults to English.');
         load_language();
     };
-    lg_script.src = './lg_' + misc.lg + '.js';
+    lg_script.src = './langs/lg_' + misc.lg + '.js';
     document.head.appendChild(lg_script);
 };
 
