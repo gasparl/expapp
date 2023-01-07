@@ -1,0 +1,406 @@
+:root,
+html {
+    width: 100%;
+    height: 100%;
+}
+
+/* the following applies to the body; elements within inherit these styles unless otherwise specified for the given element or its parents */
+body {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    margin: 0;
+    width: 100%;
+    min-height: 100%;
+    background: #fdfdfd;
+    font-size: 16px;
+
+    /* [#6] */
+    font-family: Arial, Helvetica, sans-serif;
+
+    -webkit-touch-callout: none;
+    /* iOS Safari */
+    -webkit-user-select: none;
+    /* Safari */
+    -moz-user-select: none;
+    /* Old versions of Firefox */
+    -ms-user-select: none;
+    /* Internet Explorer/Edge */
+    user-select: none;
+    /* Non-prefixed version, currently
+                                    supported by Chrome, Edge, Opera and Firefox */
+
+    display: grid;
+    place-items: center;
+}
+
+input,
+textarea {
+    font-size: 15px;
+    color: #1f1f1f;
+
+    /* [#7] */
+    font-family: "Times New Roman", Times, serif;
+}
+
+input {
+    margin: 5px;
+}
+
+textarea {
+    display: block;
+    margin: 5px auto;
+    width: 100%;
+    resize: vertical;
+}
+
+#counter {
+    font-size: 80%;
+    width: 20px;
+    max-height: 18px;
+}
+
+li {
+    margin-bottom: 10px;
+}
+
+kbd {
+    background-color: #eee;
+    border-radius: 3px;
+    border: 1px solid #b4b4b4;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, .2), 0 2px 0 0 rgba(255, 255, 255, .7) inset;
+    color: #333;
+    font-size: 90%;
+    padding: 2px;
+    white-space: nowrap;
+}
+
+hr {
+    margin: 30px 0;
+    border-top: dotted 1px;
+}
+
+/* divs representing "pages"; hidden by default */
+.page {
+    line-height: 140%;
+    margin: 15px;
+    max-width: 800px;
+    padding: 30px;
+    text-align: justify;
+    display: none;
+    border: 2px solid #454545;
+}
+
+/* in case of small viewport (such as mobiles), remove border, padding, and justified alignment [#12] */
+@media only screen and (max-width: 600px) {
+    .page {
+        width: 95%;
+        text-align: left;
+        border: 0;
+        padding: 0;
+    }
+}
+
+.main_button {
+    font-size: 20px;
+    min-height: 40px;
+    padding: 10px;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.title {
+    text-align: center;
+    font-variant: small-caps;
+    font-size: 130%;
+    font-weight: bold;
+}
+
+.options {
+    line-height: 200%;
+    font-size: 90%;
+}
+
+#save_fail {
+    background: #ff6b6b;
+    line-height: 140%;
+    display: none;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+/* LIKERT SCALE using radio buttons [#31] */
+/* (adapted from a solution by James Alvarez; original source code available at
+ https://jamesalvarez.co.uk/blog/how-to-make-responsive-likert-scales-in-css-(like-qualtrics)/ ) */
+
+.likert {
+    --likert-rows: 5;
+    margin: 20px 0;
+    display: grid;
+    max-width: 900px;
+    grid-auto-rows: 1fr;
+    gap: 1em;
+    grid-template-columns: repeat(var(--likert-rows), minmax(0, 1fr));
+    font-size: 85%;
+    line-height: 1.2;
+}
+
+/* likert scale adjustment for small viewport / mobiles [#12] */
+@media only screen and (max-width: 680px) {
+    .likert {
+        grid-template-columns: minmax(0, 400px);
+        justify-content: center;
+    }
+}
+
+.likert input {
+    max-width: 150px;
+    position: fixed;
+    opacity: 0;
+    pointer-events: none;
+}
+
+.likert span {
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    box-sizing: border-box;
+    width: 100%;
+    height: 100%;
+    min-height: 40px;
+    padding: 5px;
+    background: #dcdcdc;
+}
+
+.likert input:checked+span {
+    outline: black auto 1px;
+    background: transparent;
+    box-shadow: green;
+}
+
+.likert input:focus+span {
+    outline: -webkit-focus-ring-color auto 1px;
+}
+
+.likert span:hover {
+    background: #f1f1f1;
+    outline: lightgrey auto 0.5px;
+}
+
+
+/* ANALOG SCALE using slider [#32] */
+.scale_a_container {
+    display: flex;
+    margin: 20px 0;
+    font-size: 85%;
+    font-weight: bold;
+    justify-content: center;
+}
+
+.scale_inside {
+    display: grid;
+    place-items: center;
+}
+
+.scale_a_left {
+    margin-right: 10px;
+}
+
+.scale_a_right {
+    margin-left: 10px;
+}
+
+/* analog scale adjustment for small viewport / mobiles [#12] */
+@media only screen and (max-width: 500px) {
+    .scale_a_left {
+        writing-mode: vertical-lr;
+        transform: rotate(180deg);
+    }
+
+    .scale_a_right {
+        writing-mode: vertical-lr;
+    }
+}
+
+.slider {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 100%;
+    height: 3px;
+    background: #070707;
+    outline: none;
+    opacity: 0.6;
+    -webkit-transition: .2s;
+    transition: opacity .2s;
+    margin: 0;
+    padding: 5px 0;
+    box-shadow: inset 0 0 0 5px #ffffff;
+    cursor: pointer;
+}
+
+.slider::-moz-range-thumb {
+    appearance: none;
+    height: 22px;
+    width: 4px;
+    background: #000000;
+    cursor: pointer;
+    border: 1px solid #a0a0a0;
+    outline: none;
+}
+
+.slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    height: 22px;
+    width: 4px;
+    background: #000000;
+    cursor: pointer;
+    border: 1px solid #a0a0a0;
+    outline: none;
+}
+
+.slider:hover {
+    opacity: 1;
+}
+
+.slider_hide_thumb::-webkit-slider-thumb {
+    width: 0;
+    visibility: hidden;
+}
+
+.slider_hide_thumb::-moz-range-thumb {
+    width: 0;
+    visibility: hidden;
+}
+
+/* Google-style SPINNER */
+/* from: https://codepen.io/jczimm/pen/vEBpoL */
+.g_spinner {
+    position: relative;
+    margin: 0px auto;
+    width: 24px;
+    display: inline-block;
+    /* SET SIZE OF SPINNER HERE */
+}
+
+.g_spinner:before {
+    content: '';
+    display: block;
+    padding-top: 100%;
+}
+
+.g_circular {
+    -webkit-animation: rotate 2s linear infinite;
+    animation: rotate 2s linear infinite;
+    height: 100%;
+    -webkit-transform-origin: center center;
+    transform-origin: center center;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+}
+
+.g_path {
+    stroke-dasharray: 1, 200;
+    stroke-dashoffset: 0;
+    -webkit-animation: dash 1.5s ease-in-out infinite, color 6s ease-in-out infinite;
+    animation: dash 1.5s ease-in-out infinite, color 6s ease-in-out infinite;
+    stroke-linecap: round;
+}
+
+@-webkit-keyframes rotate {
+    100% {
+        -webkit-transform: rotate(360deg);
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes rotate {
+    100% {
+        -webkit-transform: rotate(360deg);
+        transform: rotate(360deg);
+    }
+}
+
+@-webkit-keyframes dash {
+    0% {
+        stroke-dasharray: 1, 200;
+        stroke-dashoffset: 0;
+    }
+
+    50% {
+        stroke-dasharray: 89, 200;
+        stroke-dashoffset: -35px;
+    }
+
+    100% {
+        stroke-dasharray: 89, 200;
+        stroke-dashoffset: -124px;
+    }
+}
+
+@keyframes dash {
+    0% {
+        stroke-dasharray: 1, 200;
+        stroke-dashoffset: 0;
+    }
+
+    50% {
+        stroke-dasharray: 89, 200;
+        stroke-dashoffset: -35px;
+    }
+
+    100% {
+        stroke-dasharray: 89, 200;
+        stroke-dashoffset: -124px;
+    }
+}
+
+@-webkit-keyframes color {
+
+    100%,
+    0% {
+        stroke: #d62d20;
+    }
+
+    40% {
+        stroke: #0057e7;
+    }
+
+    66% {
+        stroke: #008744;
+    }
+
+    80%,
+    90% {
+        stroke: #ffa700;
+    }
+}
+
+@keyframes color {
+
+    100%,
+    0% {
+        stroke: #d62d20;
+    }
+
+    40% {
+        stroke: #0057e7;
+    }
+
+    66% {
+        stroke: #008744;
+    }
+
+    80%,
+    90% {
+        stroke: #ffa700;
+    }
+}

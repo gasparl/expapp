@@ -1,0 +1,75 @@
+#rt_instructions {
+    background: #808080;
+}
+
+#rt_task {
+    display: none;
+    background: #000000;
+    margin: 0;
+    width: 100%;
+    height: 100%;
+}
+
+#stimulus {
+    color: #efefef;
+    font-size: 40px;
+    top: 50%;
+    left: 50%;
+    margin: 0 -50% 0 0;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    position: fixed;
+}
+
+#stop {
+    color: #b5b5b5;
+    font-size: 35px;
+    top: 35%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    position: fixed;
+}
+
+#info,
+#pausing {
+    font-size: 30px;
+    background: #acacac;
+    color: #000099;
+    display: none;
+    padding: 5px 15px;
+    border-radius: 10px;
+    margin-bottom: 10px;
+}
+
+#screen_feed {
+    background-color: #770000;
+    color: #f0fcff;
+    font-size: 35px;
+    padding: 5px;
+    margin-top: 10px;
+}
+
+
+/* MOBILE screen buttons */
+.btn_class {
+    display: none;
+    font-size: 22px;
+    box-shadow: inset 0 2px 0 0 #B0B0B0;
+    border: 1px solid #dcdcdc;
+    border-radius: 5%;
+    bottom: 20px;
+    height: 120px;
+    width: 120px;
+    text-align: center;
+    position: fixed;
+    background-color: #aaaaaa;
+}
+
+.btn_left {
+    left: 20px;
+}
+
+.btn_right {
+    right: 20px;
+}

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+
+
+<head><!-- [#1] head section -->
+    <link rel="icon" type="image/png" href="lgo.png">
+    <title>Template SST study</title>
+    <meta charset="utf-8">
+    <meta name="googlebot" content="notranslate"> <!-- [#2]  -->
+    <meta name="author" content="Gaspar Lukacs">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no,maximum-scale=1">
+    <script src="./disptime.js"></script>
+    <script src="./jscd.js"></script>
+    <script src="./utils.js"></script>
+    <script src="./rt_task.js"></script>
+    <script src="./main.js"></script>
+    <script src="./sim_test.js"></script>
+    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="./rt_task.css">
+</head>
+
+<body class="notranslate" translate="no"> <!-- [#3]  -->
+
+    <!-- warning that the browser is outdated (or JS is disabled) [#9] -->
+    <div id="init_fail">
+        It seems that the browser you are using does not support current JavaScript methods (ES6, standard since
+        2015),
+        or maybe JavaScript is disabled altogether. Please use an up-to-date version of a modern browser (preferably
+        Google Chrome) and/or
+        enable JavaScript.
+    </div>
+
+    <!-- in case wrong device is detected [#14] -->
+    <div id="notmobile" class="page">
+    </div>
+    <div id="notdesktop" class="page">
+    </div>
+
+
+    <div id="intro" class="page">
+        <div style="display:flex;justify-content:space-between;">
+            <div style="float:left">
+                <img src="./uni_logo_1.png" alt="" style="max-height:160px;max-width:100%;">
+            </div>
+            <div style="float:right">
+                <img src="./uni_logo_2.png" alt="" style="max-height:160px;max-width:100%;">
+            </div>
+        </div>
+        <div id="intro_text">
+        </div>
+    </div>
+
+    <div id="prelim" class="page">
+    </div>
+
+    <div id="rt_instructions" class="page">
+    </div>
+
+    <div id="rt_task">
+        <div style="text-align: center;">
+            <div id="info"></div>
+            <div id="pausing"></div>
+            <div id="screen_feed"></div>
+        </div>
+
+        <div id="stop">
+        </div>
+
+        <div id="stimulus"></div>
+
+        <div class="btn_class btn_left" id="btn_left">
+        </div>
+        <div class="btn_class btn_right" id="btn_right">
+        </div>
+    </div>
+
+    <div id="followup" class="page">
+    </div>
+
+    <div id="ending" class="page">
+    </div>
+
+</body>
+
+</html>
