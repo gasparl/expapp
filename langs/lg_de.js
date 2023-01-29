@@ -63,7 +63,7 @@ const tt = {
             <p><b>Technische Anforderungen:</b>
             <br>
                 <span id='device_type'></span> Wir empfehlen dringend, den Browser Google Chrome oder Mozilla Firefox für
-                diesen Test. Bevor Sie beginnen, schalten Sie bitte den Browser in den Vollbildmodus (drücken Sie <kbd>F11</kbd> oder, auf dem Mac, <kbd>Strg</kbd>+<kbd>Befehl</kbd>+<kbd>F</kbd> oder <kbd>Fn</kbd>+<kbd>F</kbd>), andernfalls wird er nach Ihrer Zustimmung automatisch umgeschaltet. Der Vollbildmodus sollte während des gesamten Experiments zur Reaktionszeit beibehalten werden (andernfalls erhalten Sie eine Warnung und können erst nach dem Zurückschalten in den Vollbildmodus fortfahren).
+                diesen Test. Bevor Sie beginnen, schalten Sie bitte den Browser in den Vollbildmodus (drücken Sie <kbd>F11</kbd> oder, auf dem Mac, <kbd>Strg</kbd>+<kbd>Befehlstaste</kbd>+<kbd>F</kbd> oder <kbd>Fn</kbd>+<kbd>F</kbd>), andernfalls wird er nach Ihrer Zustimmung automatisch umgeschaltet. Der Vollbildmodus sollte während des gesamten Experiments zur Reaktionszeit beibehalten werden (andernfalls erhalten Sie eine Warnung und können erst nach dem Zurückschalten in den Vollbildmodus fortfahren).
                 <br>Diese Anwendung wurde sorgfältig getestet, aber wir können keine Verantwortung für mögliche technische Probleme übernehmen.
                 Ausgaben
                 im Zusammenhang mit Ihrer
