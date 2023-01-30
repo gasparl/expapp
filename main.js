@@ -135,7 +135,7 @@ const ready_texts = function() {
     }
     if (misc.demo) {
         // if demonstration version, show the related information
-        document.getElementById('demo').style.display = 'block';
+        document.getElementById('demo_info').style.display = 'block';
     }
     // adjust texts based on required device type
     if (misc.device === 'mobile') {

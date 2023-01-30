@@ -131,6 +131,14 @@ hr {
     border-radius: 5px;
 }
 
+#demo_info {
+    border: red 2px solid;
+    padding: 5px;
+    font-size: 22px;
+    display: none;
+    background-color: #e9e9e9;
+}
+
 /* LIKERT SCALE using radio buttons [#31] */
 /* (adapted from a solution by James Alvarez; original source code available at
  https://jamesalvarez.co.uk/blog/how-to-make-responsive-likert-scales-in-css-(like-qualtrics)/ ) */

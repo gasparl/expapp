@@ -22,7 +22,7 @@ const tt = {
                 Informationen zur Studie
             </p>
 
-            <div style="border:red 2px solid; padding: 5px; font-size: 22px;display:none;" id="demo">
+            <div id="demo_info">
                 <b>Dies ist eine Demoversion des Experiments mit folgendem Inhalt
                     Unterschiede:
                 </b>
