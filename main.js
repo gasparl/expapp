@@ -1,6 +1,11 @@
 /* Gaspar Lukacs 2023 */
 /*jshint esversion: 6 */
 
+// this variable serves here to easily set the starting div for testing
+const start_div = 'demos'; // default: start; demos followup snarc
+// Here, the first div (ID) is 'intro'. To quickly test other pages (e.g. layout), switch the ID.
+// (notable other divisions: 'prelim', 'rt_instructions', 'rt_task', 'followup', 'ending')
+
 // miscellaneous subject data
 const misc = {
     subject_id: rchoice("CDFGHJKLMNPQRSTVWXZ") +
@@ -158,9 +163,7 @@ const ready_texts = function() {
     // other potential events to note: 'oncopy', 'oncut', 'ondrag', 'onchange', 'oninput', 'selectionchange'
 
     // If the browser supports the JavaScript included (essentially: ES6), switch to first division.
-    // default: intro; other divisions: prelim, rt_instructions, rt_task, followup, ending
-    switch_div('init_fail', 'intro', 0, false);
-    // Here, the first div (ID) is "intro". To quickly test other pages (e.g. layout), switch the ID.
+    switch_div('init_fail', start_div, 0, false);
 };
 
 // actions following consent

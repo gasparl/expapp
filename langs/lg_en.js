@@ -97,8 +97,9 @@ const tt = {
     prelim: /*html*/`
     Please give us the following demographic information about yourself.
     <br><br>
-    <br> Age:
-    <input type="number" onkeypress='return /[0-9]/i.test(event.key)' id="age_id" size="4">
+    <br> Age:    
+    <input type="number" onkeypress='return /[0-9]/i.test(event.key)'
+    oninput="this.value=this.value.slice(0,2)" min='1' max='99' id="age_id" size="4">
     | <input type="checkbox" id="age_na" onchange="age_check(event);" />
     <label for="age_na" style="font-size: 90%;">Prefer not to say</label>
 
