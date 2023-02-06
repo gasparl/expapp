@@ -184,3 +184,27 @@ const switch_div = function(current, next, wait = 0, fulls = true) {
     div_switches['p' + Object.keys(div_switches).length + '_' + next] = Math.round(performance.now() / 600) / 100 + wait;
     upload_interim();
 };
+
+
+/* Drag and Drop mechanism functions [#drag] */
+// allow dropping items (when appropriate)
+const let_drop = function(ev) {
+    let t = ev.target;
+    const data = ev.dataTransfer.getData("text");
+    if (t && t.children.length === 0 &&
+        (t.classList.contains("img_targ") || data.slice(0, 8) === t.id.slice(0, 8))) {
+        ev.preventDefault();
+    }
+    return false;
+};
+// add element ID as data to the item being dragged
+const drag = function(ev) {
+    ev.dataTransfer.setData("text", ev.target.id);
+};
+// when the item is dropped, append the element based on the ID data
+const drop = function(ev) {
+    ev.preventDefault();
+    const t = ev.target;
+    const data = ev.dataTransfer.getData("text");
+    t.appendChild(document.getElementById(data));
+};

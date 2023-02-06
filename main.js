@@ -2,7 +2,7 @@
 /*jshint esversion: 6 */
 
 // this variable serves here to easily set the starting div for testing
-const start_div = 'demos'; // default: start; demos followup snarc
+const start_div = 'intro';
 // Here, the first div (ID) is 'intro'. To quickly test other pages (e.g. layout), switch the ID.
 // (notable other divisions: 'prelim', 'rt_instructions', 'rt_task', 'followup', 'ending')
 
@@ -120,6 +120,9 @@ const load_language = function() {
         });
         // adjust and display texts
         ready_texts();
+
+        // load and add images
+        set_images();
     };
     // if the specified language file not found, default to English [15#]
     lg_script.onerror = function() {
@@ -190,6 +193,58 @@ const move_to_prelim = function(current) {
     switch_div(current, 'prelim');
     set_screen();
 };
+
+
+// image file names
+const img_names_fruit = [
+    'fruit_1_apple.jpeg', 'fruit_2_banana.jpeg',
+    'fruit_3_orange.jpeg', 'fruit_4_pear.jpeg'
+];
+const img_names_sap = ['sapling_1.png', 'sapling_2.png', 'sapling_3.png'];
+const img_names_all = img_names_fruit.concat(img_names_sap);
+
+// load and set up all image files
+const set_images = function() {
+    // preload images at the start
+    DT.preload(img_names_all.map(img => './media/' + img))
+        .then(function(images) {
+            // when loaded, append each image to the corresponding div
+            for (const ikey in DT.images) {
+                // add img class for custom image formatting
+                DT.images[ikey].classList.add("img");
+
+                // add ID based on the file name but without the extension
+                const base_name = ikey.replace('./media/', '').replace(/\.jpeg|\.png/g, '');
+                DT.images[ikey].id = base_name;
+
+                // in case of sapplings, make them draggable and add the drag function
+                if (img_names_sap.includes(ikey)) {
+                    DT.images[ikey].draggable = true;
+                    DT.images[ikey].ondragstart = drag;
+                }
+
+                // appending to the corresponding div
+                document.getElementById(base_name + '_div').appendChild(DT.images[ikey]);
+            }
+            console.log('Preloaded all', images);
+        })
+        .catch(function(err) {
+            console.error('Failed', err);
+            alert('Failed to load images! Try reloading the page or contact lkcsgaspar@gmail.com');
+        });
+
+    // set up drag and drop mechanism [#drag]
+    // for divs containing the images at start
+    // and the target divs where the images are to be moved to
+    img_names.forEach(img_nam => {
+        img_nam.replace('.png', '');
+        ['_div', '_targ'].forEach(suffx => {
+            document.getElementById(img_nam + suffx).ondrop = drop;
+            document.getElementById(img_nam + suffx).ondragover = let_drop;
+        });
+    });
+};
+
 
 const set_screen = function() {
     // restrict leaving the page, set up alert

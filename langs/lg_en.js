@@ -149,8 +149,7 @@ const tt = {
 
     <br>
     <br>
-     <button class="main_button" type="button" onclick="prelim_submit();">
-        Next
+     <button class="main_button class_next" type="button" onclick="prelim_submit();">
     </button>
     <br>
     `,
@@ -373,5 +372,6 @@ const tt = {
                 manually (note: you must allow pop-ups), and then send it to lkcsgaspar@gmail.com.</b>
                 <br>
                 <br>
-            `
+            `,
+    class_next: 'Next'
 };
