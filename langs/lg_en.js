@@ -169,6 +169,8 @@ const tt = {
           During the task, please use the left-side "D" for a "left response" and the right-side "K" keys for a "right response".
         </p>`,
 
+    story_instruction: 'Below, you will see some pictures. Please put them in meaningful horizontal order (drag and drop with a mouse cursor).',
+
     // main task instructions
     block_text: [
         // block 1
@@ -373,5 +375,6 @@ const tt = {
                 <br>
                 <br>
             `,
+    unload_warn: 'If you leave this page, all your progress will be lost. Are you sure you want to proceed?.',
     class_next: 'Next'
 };

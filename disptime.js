@@ -62,7 +62,7 @@ const DT = (() => {
         // loaded images
         images: {},
         // preload images
-        preload(sources) {
+        preload: sources =>
             Promise.all(
                 sources.map(
                     src => new Promise(function(resolve, reject) {
@@ -73,8 +73,7 @@ const DT = (() => {
                         };
                         img.onerror = reject;
                         img.src = src;
-                    })));
-        },
+                    }))),
         // RAF timestamp samples
         samples: [],
         // refresh interval(s) based on RAF timestamp samples

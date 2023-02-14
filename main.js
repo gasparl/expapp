@@ -2,7 +2,7 @@
 /*jshint esversion: 6 */
 
 // this variable serves here to easily set the starting div for testing
-const start_div = 'intro';
+const start_div = 'story_sequence';
 // Here, the first div (ID) is 'intro'. To quickly test other pages (e.g. layout), switch the ID.
 // (notable other divisions: 'prelim', 'rt_instructions', 'rt_task', 'followup', 'ending')
 
@@ -196,18 +196,14 @@ const move_to_prelim = function(current) {
 
 
 // image file names
-const img_names_fruit = [
-    'fruit_1_apple.jpeg', 'fruit_2_banana.jpeg',
-    'fruit_3_orange.jpeg', 'fruit_4_pear.jpeg'
-];
-const img_names_sap = ['sapling_1.png', 'sapling_2.png', 'sapling_3.png'];
-const img_names_all = img_names_fruit.concat(img_names_sap);
+const img_names = ['sapling_1.png', 'sapling_2.png', 'sapling_3.png'];
 
 // load and set up all image files
 const set_images = function() {
     // preload images at the start
-    DT.preload(img_names_all.map(img => './media/' + img))
+    DT.preload(img_names.map(img => './media/' + img))
         .then(function(images) {
+
             // when loaded, append each image to the corresponding div
             for (const ikey in DT.images) {
                 // add img class for custom image formatting
@@ -217,13 +213,14 @@ const set_images = function() {
                 const base_name = ikey.replace('./media/', '').replace(/\.jpeg|\.png/g, '');
                 DT.images[ikey].id = base_name;
 
-                // in case of sapplings, make them draggable and add the drag function
-                if (img_names_sap.includes(ikey)) {
-                    DT.images[ikey].draggable = true;
-                    DT.images[ikey].ondragstart = drag;
-                }
+                // make images draggable and add the drag function
+                DT.images[ikey].draggable = true;
+                DT.images[ikey].ondragstart = drag;
 
                 // appending to the corresponding div
+                console.log(base_name);
+                console.log(document.getElementById(base_name + '_div'));
+                //TODO
                 document.getElementById(base_name + '_div').appendChild(DT.images[ikey]);
             }
             console.log('Preloaded all', images);
@@ -237,7 +234,7 @@ const set_images = function() {
     // for divs containing the images at start
     // and the target divs where the images are to be moved to
     img_names.forEach(img_nam => {
-        img_nam.replace('.png', '');
+        img_nam = img_nam.replace('.png', '');
         ['_div', '_targ'].forEach(suffx => {
             document.getElementById(img_nam + suffx).ondrop = drop;
             document.getElementById(img_nam + suffx).ondragover = let_drop;
@@ -306,6 +303,39 @@ const prelim_submit = (() => {
 
         if (misc.demo || clicked_once || (misc.sex && (misc.age ||
             misc.age_na) && misc.education && is_lang)) {
+            switch_div('prelim', 'story_sequence');
+        } else {
+            clicked_once = true;
+            alert(tt.please_answer_all);
+        };
+    };
+})();
+
+// submit story sequence results
+const sequence_submit = (() => {
+    // "clicked_once" to keep track of whether the user tried to proceed already [#34]
+    // (this self-executing function serves to keep this variable local)
+    let clicked_once = false;
+    return function() {
+        misc.sex = get_radio('sex');
+        misc.age = document.getElementById("age_id").value;
+        misc.age_na = document.getElementById("age_na").checked;
+        misc.education = document.getElementById("education").value;
+        let is_lang = false;
+        ['lg_en',
+            'lg_de',
+            'lg_fr',
+            'lg_na'
+        ].forEach((lg_id) => {
+            misc[lg_id] = document.getElementById(lg_id).checked;
+            if (misc[lg_id]) {
+                is_lang = true;
+            }
+        });
+        misc.lg_note = document.getElementById("lg_note").value;
+
+        if (misc.demo || clicked_once || (misc.sex && (misc.age ||
+            misc.age_na) && misc.education && is_lang)) {
             switch_div('prelim', 'rt_instructions');
             init_block(); // initiate first block of the response time task
         } else {
@@ -314,6 +344,7 @@ const prelim_submit = (() => {
         };
     };
 })();
+
 
 // monitor clicks on attention checker item and remove on three clicks completed [#35]
 const attention_monitor = (() => {

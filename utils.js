@@ -56,13 +56,15 @@ const capitalize = function(s) {
 // alert to confirm or cancel unload (i.e., leaving the page by navigating away or closing the tab) [#17]
 const keep_state = function() {
     window.onbeforeunload = (event) => {
-        event.preventDefault();
         unload_attemps.push(performance.now());
         misc.unloads = unload_attemps.join('_');
         upload_interim();
-        const warn = "If you leave this page, all your progress will be lost. Are you sure you want to proceed?.";
-        event.returnValue = warn;
-        return warn;
+        const warn = tt.unload_warn;
+        if (!misc.demo) {
+            event.preventDefault();
+            event.returnValue = warn;
+            return warn;
+        }
     };
     // try prevent navigating back
     history.pushState(null, null, location.href);
@@ -190,15 +192,19 @@ const switch_div = function(current, next, wait = 0, fulls = true) {
 // allow dropping items (when appropriate)
 const let_drop = function(ev) {
     let t = ev.target;
-    const data = ev.dataTransfer.getData("text");
+    console.log(t);
+    console.log(t.children.length);
     if (t && t.children.length === 0 &&
-        (t.classList.contains("img_targ") || data.slice(0, 8) === t.id.slice(0, 8))) {
+        (t.classList.contains("img_targ") || dragged_id.slice(0, 9) === t.id.slice(0, 9))) {
         ev.preventDefault();
     }
     return false;
 };
+let dragged_id; // to hold the ID info of the dragged item
+
 // add element ID as data to the item being dragged
 const drag = function(ev) {
+    dragged_id = ev.target.id;
     ev.dataTransfer.setData("text", ev.target.id);
 };
 // when the item is dropped, append the element based on the ID data
