@@ -343,6 +343,7 @@ const tt = {
     attention_passed: 'Thank you for paying attention. You may continue.',
     please_answer_all: 'Please answer all questions on this page.',
     please_answer_required: 'Please answer the required questions.',
+    please_place_items: 'Please place all images to the target boxes.',
     no_paste: 'Please do not copy-paste anything into this field.',
 
     // last division

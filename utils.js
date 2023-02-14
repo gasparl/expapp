@@ -192,8 +192,6 @@ const switch_div = function(current, next, wait = 0, fulls = true) {
 // allow dropping items (when appropriate)
 const let_drop = function(ev) {
     let t = ev.target;
-    console.log(t);
-    console.log(t.children.length);
     if (t && t.children.length === 0 &&
         (t.classList.contains("img_targ") || dragged_id.slice(0, 9) === t.id.slice(0, 9))) {
         ev.preventDefault();

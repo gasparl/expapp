@@ -218,9 +218,6 @@ const set_images = function() {
                 DT.images[ikey].ondragstart = drag;
 
                 // appending to the corresponding div
-                console.log(base_name);
-                console.log(document.getElementById(base_name + '_div'));
-                //TODO
                 document.getElementById(base_name + '_div').appendChild(DT.images[ikey]);
             }
             console.log('Preloaded all', images);
@@ -236,8 +233,8 @@ const set_images = function() {
     img_names.forEach(img_nam => {
         img_nam = img_nam.replace('.png', '');
         ['_div', '_targ'].forEach(suffx => {
-            document.getElementById(img_nam + suffx).ondrop = drop;
-            document.getElementById(img_nam + suffx).ondragover = let_drop;
+            document.getElementById(img_nam + suffx).addEventListener("drop", drop);
+            document.getElementById(img_nam + suffx).addEventListener("dragover", let_drop);
         });
     });
 };
@@ -317,31 +314,21 @@ const sequence_submit = (() => {
     // (this self-executing function serves to keep this variable local)
     let clicked_once = false;
     return function() {
-        misc.sex = get_radio('sex');
-        misc.age = document.getElementById("age_id").value;
-        misc.age_na = document.getElementById("age_na").checked;
-        misc.education = document.getElementById("education").value;
-        let is_lang = false;
-        ['lg_en',
-            'lg_de',
-            'lg_fr',
-            'lg_na'
-        ].forEach((lg_id) => {
-            misc[lg_id] = document.getElementById(lg_id).checked;
-            if (misc[lg_id]) {
-                is_lang = true;
+        const sequence = [];
+        img_names.map(name => name.replace('.png', '_targ')).forEach(targ_div => {
+            const o_child = document.getElementById(targ_div).children[0];
+            if (o_child) {
+                sequence.push(o_child.id);
             }
         });
-        misc.lg_note = document.getElementById("lg_note").value;
-
-        if (misc.demo || clicked_once || (misc.sex && (misc.age ||
-            misc.age_na) && misc.education && is_lang)) {
-            switch_div('prelim', 'rt_instructions');
+        if (misc.demo || clicked_once || sequence.length === 3) {
+            misc.sequence = sequence.join('|');
+            switch_div('story_sequence', 'rt_instructions');
             init_block(); // initiate first block of the response time task
         } else {
             clicked_once = true;
-            alert(tt.please_answer_all);
-        };
+            alert(tt.please_place_items);
+        }
     };
 })();
 
@@ -365,9 +352,9 @@ const attention_monitor = (() => {
 
 // submit follow-up information division, go to end division, upload final data
 const followup_submit = (() => {
-    // "clicked_once2" to keep track of whether the user tried to proceed already [#34]
+    // "clicked_once" to keep track of whether the user tried to proceed already [#34]
     // (this self-executing function serves to keep this variable local)
-    let clicked_once2 = false;
+    let clicked_once = false;
     return function() {
         misc.likert_example = get_radio('likert_example');
         misc.analog_example = document.getElementById("analog_example");
@@ -375,7 +362,7 @@ const followup_submit = (() => {
         misc.analog_example = misc.analog_example.classList.contains('slider_hide_thumb') ? 'NA' : misc.analog_example.value;
         misc.feedback = document.getElementById("feedback").value;
 
-        if (misc.demo || clicked_once2 || (misc.likert_example != '' && misc.analog_example != 'NA')) {
+        if (misc.demo || clicked_once || (misc.likert_example != '' && misc.analog_example != 'NA')) {
             fullscreen_off();
             switch_div('followup', 'ending');
             // show completion password if ID is found (or if it's for demonstration)
@@ -384,7 +371,7 @@ const followup_submit = (() => {
             }
             upload_final();
         } else {
-            clicked_once2 = true;
+            clicked_once = true;
             alert(tt.please_answer_required);
         }
     };
