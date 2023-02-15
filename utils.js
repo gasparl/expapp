@@ -199,7 +199,6 @@ const let_drop = function(ev) {
     return false;
 };
 let dragged_id; // to hold the ID info of the dragged item
-
 // add element ID as data to the item being dragged
 const drag = function(ev) {
     dragged_id = ev.target.id;
@@ -210,19 +209,39 @@ const drop = function(ev) {
     ev.preventDefault();
     const t = ev.target;
     const data = ev.dataTransfer.getData("text");
-    t.appendChild(document.getElementById(data));
+    const dragged = document.getElementById(data);
+    if (dragged !== t) {
+        t.appendChild(dragged);
+    }
+};
+
+// gets current geo position
+const current_position = function() {
+    navigator.geolocation.getCurrentPosition(pos => {
+        console.log(pos.coords); // the coordinates are returned and can be used here
+        console.log(pos.coords.latitude);
+        console.log(pos.coords.longitude);
+        console.log(pos.coords.altitude);
+        // e.g. pos.coords.latitude, pos.coords.longitude
+    }, err => {
+        console.warn(`ERROR(${err.code}): ${err.message}`);
+    }, {
+        enableHighAccuracy: true,
+        timeout: Infinity,
+        maximumAge: 0
+    });
 };
 
 
 // calculates the similarity between any two given texts
 // results are by default in percentage (0-100)
 const similar_text = function(first, second, percent = true) {
-    //  discuss at: https://locutus.io/php/similar_text/
+    // discussed at: https://locutus.io/php/similar_text/
     // original by: Rafał Kukawski (https://blog.kukawski.pl)
     // bugfixed by: Chris McMacken
     // bugfixed by: Jarkko Rantavuori original by findings in stackoverflow (https://stackoverflow.com/questions/14136349/how-does-similar-text-work)
     // improved by: Markus Padourek (taken from https://www.kevinhq.com/2012/06/php-similartext-function-in-javascript_16.html)
-    // minor adjustments by GL 2023
+    // minor adjustments by Gaspar Lukacs 2023
     // PHP reference: Programming Classics: Implementing the World's Best Algorithms by Oliver (ISBN 0-131-00413-1)
     // https://www.php.net/manual/en/function.similar-text.php
     //   example 1: similar_text('Hello World!', 'Hello locutus!')
