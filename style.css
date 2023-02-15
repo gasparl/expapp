@@ -161,6 +161,26 @@ hr {
     display: inline-block;
 }
 
+@media only screen and (max-width: 700px) {
+
+    .img_targ,
+    #sapling_1_div,
+    #sapling_2_div,
+    #sapling_3_div {
+        display: table-cell;
+        height: 22vw;
+        width: 22vw;
+    }
+
+    .img {
+        height: 22vw;
+    }
+
+    .center {
+        border-spacing: 2vw 0;
+    }
+}
+
 .img_targ {
     background-color: #CFE2F3;
 }
