@@ -38,7 +38,6 @@
     <div id="notdesktop" class="page">
     </div>
 
-
     <div id="intro" class="page">
         <div style="display:flex;justify-content:space-between;">
             <div style="float:left">
@@ -52,15 +51,13 @@
         </div>
     </div>
 
-    <div id="prelim" class="page">
+    <div class="page" id="prelim">
     </div>
-
 
     <div class="page" id="story_sequence">
         <div id='story_instruction'>
         </div>
         <hr>
-
         <div class="center">
             <div class='img_div' id='sapling_1_div' ondrop="drop(event)" ondragover="let_drop(event)"></div>
             <div class='img_div' id='sapling_3_div' ondrop="drop(event)" ondragover="let_drop(event)"></div>
@@ -70,9 +67,19 @@
             <div class='img_targ' id='sapling_2_targ' ondrop="drop(event)" ondragover="let_drop(event)"></div>
             <div class='img_targ' id='sapling_3_targ' ondrop="drop(event)" ondragover="let_drop(event)"></div>
         </div>
-
         <hr>
         <button class="main_button class_next" type="button" onclick="sequence_submit();"></button>
+    </div>
+
+    <div class="page" id="media">
+        <p id='media_info'>Please watch the full video attentively.</p>
+        <!-- note: the media controls can be altogether removed by removing the "controls" attribute -->
+        <audio id="aud_id" controls>
+            Your browser does not support video.
+        </audio>
+        <video id="vid_id" controls>
+            Your browser does not support audio.
+        </video>
     </div>
 
     <div id="rt_instructions" class="page">
@@ -99,7 +106,7 @@
     <div id="followup" class="page">
     </div>
 
-    <div id="ending" class="page">
+    <div id="ending" class="page selectable">
     </div>
 
 </body>

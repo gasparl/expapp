@@ -34,6 +34,20 @@ body {
     place-items: center;
 }
 
+.selectable {
+    -webkit-touch-callout: text;
+    /* iOS Safari */
+    -webkit-user-select: text;
+    /* Safari */
+    -moz-user-select: text;
+    /* Old versions of Firefox */
+    -ms-user-select: text;
+    /* Internet Explorer/Edge */
+    user-select: text;
+    /* Non-prefixed version, currently
+                                    supported by Chrome, Edge, Opera and Firefox */
+}
+
 input,
 textarea {
     font-size: 16px;
@@ -184,6 +198,13 @@ hr {
 .img_targ {
     background-color: #CFE2F3;
 }
+
+#aud_id,
+#vid_id {
+    margin: 20px;
+    display: none;
+}
+
 
 /* LIKERT SCALE using radio buttons [#31] */
 /* (adapted from a solution by James Alvarez; original source code available at

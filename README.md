@@ -1,1 +1,5 @@
 This is a boilerplate project connected to the tutorial "Creating Web Applications for Online Psychological Experiments: A Hands-On Technical Guide Including a Boilerplate". It is intended as a boilerplate (template) for creating web applications for online psychological experiments via the HTML/CSS/JavaScript framework from scratch, without any additional software.
+
+### License
+
+The scripts in this repository are under the open-source [BSD 2-Clause License](https://github.com/gasparl/expapp/blob/master/LICENSE.md). The current video clips are from [Pixabay](https://pixabay.com/) and are free to reuse under [their terms](https://pixabay.com/service/license/). The current sample sound clips are from [Sample Focus](https://samplefocus.com/) and are free to reuse under [their terms](https://samplefocus.com/license).

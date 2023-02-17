@@ -232,6 +232,42 @@ const current_position = function() {
     });
 };
 
+/* VIDEO restrictions */
+// video settings
+function vid_listen(callback) {
+    var video = document.getElementById('vid_id');
+    video.addEventListener('timeupdate', timeupd);
+    // prevent user from seeking
+    video.addEventListener('seeking', seekn);
+    video.ended = callback;
+}
+
+function timeupd() {
+    var video = document.getElementById('vid_id');
+    if (!video.seeking) {
+        tracked_time = video.currentTime;
+    }
+    if (!document.hasFocus()) {
+        video.pause();
+    }
+}
+
+function seekn() {
+    var video = document.getElementById('vid_id');
+    var delta = video.currentTime - tracked_time;
+    if (Math.abs(delta) > 0.01) {
+        //play back from where the user started seeking after rewind or without rewind
+        video.currentTime = tracked_time;
+    }
+}
+
+
+function stopl() {
+    var video = document.getElementById('vid_id');
+    video.removeEventListener('timeupdate', timeupd);
+    video.removeEventListener('seeking', seekn);
+}
+
 
 // calculates the similarity between any two given texts
 // results are by default in percentage (0-100)

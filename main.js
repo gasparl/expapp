@@ -2,7 +2,7 @@
 /*jshint esversion: 6 */
 
 // this variable serves here to easily set the starting div for testing
-const start_div = 'story_sequence';
+const start_div = 'media';
 // Here, the first div (ID) is 'intro'. To quickly test other pages (e.g. layout), switch the ID.
 // (notable other divisions: 'prelim', 'rt_instructions', 'rt_task', 'followup', 'ending')
 
@@ -60,6 +60,9 @@ document.addEventListener("DOMContentLoaded", function() {
     // set starting (first main block) experimental condition (here: ssd magnitudes) randomly
     current_cond = (Math.random() < 0.5) ? 'short' : 'long';
     misc.condition = current_cond + '_first'; // save first condition info
+
+    // random media choice
+    misc.media = rchoice(['audio_piano_1.wav', 'audio_piano_2.wav', 'vid_cat_1.mp4', 'vid_cat_2.mp4']);
 
     // check URL query parameters, proceed depending on that
     check_params();
@@ -123,6 +126,8 @@ const load_language = function() {
 
         // load and add images
         set_images();
+        // load and add audio/video
+        set_media();
     };
     // if the specified language file not found, default to English [15#]
     lg_script.onerror = function() {
@@ -220,7 +225,7 @@ const set_images = function() {
                 // appending to the corresponding div
                 document.getElementById(base_name + '_div').appendChild(DT.images[ikey]);
             }
-            console.log('Preloaded all', images);
+            console.log('Preloaded images.');
         })
         .catch(function(err) {
             console.error('Failed', err);
@@ -239,6 +244,19 @@ const set_images = function() {
     });
 };
 
+// prepare audio or video stimuli
+const set_media = function() {
+    let med_elem;
+    if (misc.media.endsWith('.wav')) {
+        med_elem = document.getElementById('aud_id');
+    } else {
+        med_elem = document.getElementById('vid_id');
+    }
+    med_elem.preload = 'auto';
+    med_elem.src = './media/' + misc.media;
+    med_elem.style.display = 'block';
+    console.log(med_elem);
+};
 
 const set_screen = function() {
     // restrict leaving the page, set up alert
