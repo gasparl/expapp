@@ -201,8 +201,9 @@ hr {
 
 #aud_id,
 #vid_id {
-    margin: 20px;
+    margin: 20px 0;
     display: none;
+    max-width: 100%;
 }
 
 

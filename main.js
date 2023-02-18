@@ -255,8 +255,14 @@ const set_media = function() {
     med_elem.preload = 'auto';
     med_elem.src = './media/' + misc.media;
     med_elem.style.display = 'block';
+    secure_media(med_elem, () => {
+        // on media finishing: enable the button to move on
+        document.getElementById('media_submitter').disabled = false;
+    });
     console.log(med_elem);
 };
+
+
 
 const set_screen = function() {
     // restrict leaving the page, set up alert
@@ -341,8 +347,7 @@ const sequence_submit = (() => {
         });
         if (misc.demo || clicked_once || sequence.length === 3) {
             misc.sequence = sequence.join('|');
-            switch_div('story_sequence', 'rt_instructions');
-            init_block(); // initiate first block of the response time task
+            switch_div('story_sequence', 'media');
         } else {
             clicked_once = true;
             alert(tt.please_place_items);
@@ -350,6 +355,11 @@ const sequence_submit = (() => {
     };
 })();
 
+// media "submit" (i.e., confirm having watched)
+const media_submit = function() {
+    switch_div('media', 'rt_instructions');
+    init_block(); // initiate first block of the response time task
+};
 
 // monitor clicks on attention checker item and remove on three clicks completed [#35]
 const attention_monitor = (() => {

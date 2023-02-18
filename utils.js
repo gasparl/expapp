@@ -233,40 +233,33 @@ const current_position = function() {
 };
 
 /* VIDEO restrictions */
-// video settings
-function vid_listen(callback) {
-    var video = document.getElementById('vid_id');
-    video.addEventListener('timeupdate', timeupd);
-    // prevent user from seeking
-    video.addEventListener('seeking', seekn);
-    video.ended = callback;
-}
+const restrict_media = (() => {
+    let tracked_time;
+    return function(media_elem, callback) {
+        // in case of manual seeking (winding back/forward), reset to original time point
+        media_elem.onseeking = () => {
+            const delta = media_elem.currentTime - tracked_time;
+            if (Math.abs(delta) > 0.01) {
+                // play back from where the user started seeking
+                media_elem.currentTime = tracked_time;
+            }
+        };
 
-function timeupd() {
-    var video = document.getElementById('vid_id');
-    if (!video.seeking) {
-        tracked_time = video.currentTime;
-    }
-    if (!document.hasFocus()) {
-        video.pause();
-    }
-}
+        // if media is ongoing (but not by manual seeking)
+        media_elem.ontimeupdate = () => {
+            // update tracked time variable
+            if (!media_elem.seeking) {
+                tracked_time = media_elem.currentTime;
+            }
+            // pause media if the document is not in focus
+            if (!document.hasFocus()) {
+                media_elem.pause();
+            }
+        };
 
-function seekn() {
-    var video = document.getElementById('vid_id');
-    var delta = video.currentTime - tracked_time;
-    if (Math.abs(delta) > 0.01) {
-        //play back from where the user started seeking after rewind or without rewind
-        video.currentTime = tracked_time;
-    }
-}
-
-
-function stopl() {
-    var video = document.getElementById('vid_id');
-    video.removeEventListener('timeupdate', timeupd);
-    video.removeEventListener('seeking', seekn);
-}
+        media_elem.onended = callback;
+    };
+})();
 
 
 // calculates the similarity between any two given texts
