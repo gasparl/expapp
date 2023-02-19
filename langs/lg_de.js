@@ -27,7 +27,7 @@ const tt = {
                 </b>
                 <br>
                 <ul>
-                    <li>Es gibt weniger Versuche (8 pro Block anstelle von 50).</li>
+                    <li>Es gibt weniger Versuche (12 pro Block anstelle von 60).</li>
                     <li>Keine der Fragen ist obligatorisch, um auf die nächste Seite zu gelangen (und
                         es gibt keine Meldung, wenn Fragen nicht beantwortet werden).</li>
                     <li>Ein Vollbild wird nicht automatisch initiiert.</li>

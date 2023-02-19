@@ -102,17 +102,17 @@ const practice_valid = (() => {
 // generate trial items for any given block in the response time task [#41]
 const generate_items = function() {
     const new_items = [];
-    // demo: 1 repetition per item and SSD type; otherwise, practice: 2, main block: 5
-    const num_reps = misc.demo ? 1 : (phase == 'practice' ? 2 : 5);
+    // demo: 1 repetition per item and SSD type; otherwise, practice: 1, main block: 5
+    const num_reps = misc.demo ? 1 : (phase == 'practice' ? 1 : 5);
     const left_stims = ['<-', '←'];
     const right_stims = ['->', '→'];
 
     // set SSDs to be used
     let current_ssds;
     if (current_cond === 'low') {
-        current_ssds = [150, 250];
+        current_ssds = [0, 150, 250];
     } else {
-        current_ssds = [300, 400];
+        current_ssds = [0, 300, 400];
     }
 
     // generate the list of objects (trial items)
@@ -296,8 +296,12 @@ const trial_listener = function() {
                 resp_left.ontouchstart = null;
                 resp_right.ontouchstart = null;
             }
-            // exceeded time limit during practice [#43]
-            trial_feed(tt.too_slow);
+            if (phase === 'practice') {
+                // exceeded time limit during practice [#43]
+                trial_feed(tt.too_slow);
+            } else {
+                store_response();
+            }
         }, rt_limit);
     }
 };

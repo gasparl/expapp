@@ -26,7 +26,7 @@ const tt = {
                 </b>
                 <br>
                 <ul>
-                    <li>There are less trials (8 per block instead of 50).</li>
+                    <li>There are less trials (12 per block instead of 60).</li>
                     <li>None of the questions are obligatory in order to proceed to the next page (and
                         there is no alert if questions are not answered).</li>
                     <li>No fullscreen is initiated automatically.</li>
