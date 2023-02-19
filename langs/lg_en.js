@@ -268,7 +268,7 @@ const tt = {
     followup:/*html*/ `
         Please indicate your agreement with the following statement:
         My environment was calm and quiet during the testing.
-        <!-- [#31] -->
+        <!-- [#32] -->
         <div class="likert">
             <label><input name="likert_example" type="radio" value="1" /><span>
                     Strongly disagree
@@ -290,7 +290,7 @@ const tt = {
         <hr>
         To indicate that you are paying attention, please click/tap three times on any of the
         options.
-        <!-- [#35] -->
+        <!-- [#37] -->
         <div id="attention_check_container">
             <div class="likert" onclick="attention_monitor(event);">
                 <label><input name="attention_example" type="radio" value="1" /><span>
@@ -314,7 +314,7 @@ const tt = {
         <hr>
         How much did you enjoy this experiment? <br>
         <i>(Click/tap anywhere on the slider to mark the extent of your enjoyment.)</i>
-        <!-- [#32] -->
+        <!-- [#33] -->
         <div class="scale_a_container">
             <div class="scale_a_left">
                 Not at all
@@ -331,7 +331,6 @@ const tt = {
         <hr>
         In the text field below, optionally, you may leave any comment, feedback, or suggestion. In particular, if you
         encountered any technical or other difficulties during the test, please let us know.
-        <!-- [#36] -->
         <div style="display: flex;margin-top: 10px;">
             <textarea id="feedback" oninput="char_count(this,'counter');" maxlength="800"></textarea>
             <input disabled maxlength="3" value="800" id="counter">

@@ -64,7 +64,7 @@ const init_block = function() {
 
         if (block_number === 1) { // if first block: practice
             phase = 'practice';
-            practice_rts = {}; // for collecting RTs during practice, for evaluation [#40]
+            practice_rts = {}; // for collecting RTs during practice, for evaluation [#44]
         } else {
             phase = 'main';
             // if third block (second main block), switch conditions
@@ -77,7 +77,7 @@ const init_block = function() {
 };
 
 
-// evaluate validity of practice responses [#40]
+// evaluate validity of practice responses [#44]
 const practice_valid = (() => {
     // "repeated" to keep track of whether there was already a practice repetition
     // (this self-executing function serves to keep this variable local)
@@ -99,7 +99,7 @@ const practice_valid = (() => {
 })();
 
 
-// generate trial items for any given block in the response time task [#37]
+// generate trial items for any given block in the response time task [#41]
 const generate_items = function() {
     const new_items = [];
     // demo: 1 repetition per item and SSD type; otherwise, practice: 2, main block: 5
@@ -142,7 +142,7 @@ const init_trials = function() {
     }
     document.getElementById('info').style.display = 'block';
     start_listener();
-    DT.loopOn(); // start recursive RAF calls [#45]
+    DT.loopOn(); // start recursive RAF calls [#49]
 };
 
 // setup start (keypress or screen button) listener
@@ -165,7 +165,7 @@ const start_listener = function() {
                 resp_right.textContent = '';
 
                 touch_wrapup(elem);
-                // restart inactivity checker [#44]
+                // restart inactivity checker [#48]
                 countdown_off();
                 countdown();
                 setTimeout(() => {
@@ -179,11 +179,11 @@ const start_listener = function() {
             if (e.key == " " ||
                 e.code == "Space") {
                 document.onkeydown = null; // stop listening for the keypress
-                // restart inactivity checker [#44]
+                // restart inactivity checker [#48]
                 countdown_off();
                 countdown();
 
-                // enter fullscreen, just in case it has been escaped [#19]
+                // enter fullscreen, just in case it has been escaped [#20]
                 fullscreen_on();
 
                 setTimeout(() => {
@@ -200,16 +200,16 @@ const next_trial = function() {
     iti_current = rdigit(iti.min, iti.max);
     if (block_items.length > 0) {
         setTimeout(function() {
-            // setting the timer for inactivity (10 sec) [#44]
+            // setting the timer for inactivity (10 sec) [#48]
             countdown();
 
-            // execute simulated keypresses if activated [#48]
+            // execute simulated keypresses if activated [#52]
             if (typeof sim_user === "function") {
                 sim_user();
             }
 
             trial_number++;
-            // get trial information from the pre-generated object [#38]
+            // get trial information from the pre-generated object [#42]
             item_x = block_items.shift();
 
             // add some additional information regarding current trial
@@ -220,9 +220,9 @@ const next_trial = function() {
             item_x.w_width = window.innerWidth;
             item_x.w_height = window.innerHeight;
 
-            // execute code (including stimulus display command) in the next RAF call [#47]
+            // execute code (including stimulus display command) in the next RAF call [#51]
             DT.display(function(timestamp) {
-                // display stimulus in the upcoming frame (using the trial info content [#38])
+                // display stimulus in the upcoming frame (using the trial info content [#42])
                 document.getElementById('stimulus').textContent = item_x.content;
                 item_x.display_arrow = timestamp; // paint time of main stimulus
                 trial_listener();
@@ -239,7 +239,7 @@ const next_trial = function() {
         }, iti_current - iti.min);
     } else {
         // finish block if all trials are done
-        DT.loopOff(); // stop recursive RAF calls [#46]
+        DT.loopOff(); // stop recursive RAF calls [#50]
         init_block();
     }
 };
@@ -275,10 +275,10 @@ const trial_listener = function() {
                     }
                 };
             } else {
-                // feedback about wrong key pressed [#42]
+                // feedback about wrong key pressed [#46]
                 document.getElementById('info').style.display = 'block';
                 document.getElementById('info').innerHTML = tt.key_astray;
-                // store info about wrong key pressed, also indicated by preceding exclamation mark [#41]
+                // store info about wrong key pressed, also indicated by preceding exclamation mark [#45]
                 if (!item_x.correct) {
                     item_x.correct = '!';
                 }
@@ -296,7 +296,7 @@ const trial_listener = function() {
                 resp_left.ontouchstart = null;
                 resp_right.ontouchstart = null;
             }
-            // exceeded time limit during practice [#39]
+            // exceeded time limit during practice [#43]
             trial_feed(tt.too_slow);
         }, rt_limit);
     }
@@ -326,17 +326,17 @@ const process_response = function(resp_event, resp_side) {
     // cancel response window (if any)
     clearTimeout(response_window);
 
-    // disable inactivity checker [#44]
+    // disable inactivity checker [#48]
     countdown_off();
     clearTimeout(inactivity);
     inactivity = null;
     document.getElementById('info').style.display = 'none';
 
-    // enter fullscreen, just in case it has been escaped [#19]
+    // enter fullscreen, just in case it has been escaped [#20]
     fullscreen_on();
 
     item_x.response_start = resp_event.timeStamp;
-    item_x.trust = resp_event.isTrusted; // whether the keypress was simulated [#43]
+    item_x.trust = resp_event.isTrusted; // whether the keypress was simulated [#47]
     item_x.response_key = resp_side;
 
     const correct_key = item_x.response_key === item_x.direction;
@@ -344,14 +344,14 @@ const process_response = function(resp_event, resp_side) {
         item_x.correct = correct_key;
     }
     if (phase === 'practice' && (!correct_key)) {
-        // wrong response during practice [#39]
+        // wrong response during practice [#43]
         trial_feed(tt.key_wrong);
     } else {
         store_response();
     }
 };
 
-// warning about wrong key or too slow (i.e., no timely) response [#39]
+// warning about wrong key or too slow (i.e., no timely) response [#43]
 // (here, the warning is displayed in the same HTML element as the stimulis, 
 // but it could also be done in another element)
 const trial_feed = function(msg) {
@@ -363,7 +363,7 @@ const trial_feed = function(msg) {
     }, 500);
 };
 
-// assign headers for the eventual results table [#29]
+// assign headers for the eventual results table [#30]
 let subject_results = [
     'subject_id', 'phase', 'block', 'trial', 'condition', 'ssd', 'stimulus', 'direction', 'display_arrow', 'display_stop', 'response_key', 'correct', 'response_start', 'response_end', 'iti', 'trusted', 'w_width', 'w_height', 'fulls'
 ].join("\t") + "\n";
@@ -375,7 +375,7 @@ const store_response = function() {
     document.onkeydown = null;
     document.onkeyup = null;
 
-    // if practice, collect responses for evaluation per each direction [#40]
+    // if practice, collect responses for evaluation per each direction [#44]
     if (phase === 'practice') {
         if (practice_rts[item_x.direction] == null) {
             practice_rts[item_x.direction] = [];
@@ -387,11 +387,11 @@ const store_response = function() {
         if (misc.demo) {
             console.log(item_x); // print info
         }
-        // store response details to the in the results table [#29]
+        // store response details to the in the results table [#30]
         subject_results += [
             misc.subject_id, phase, block_number, trial_number, current_cond, item_x.ssd, item_x.content, item_x.direction, ro(item_x.display_arrow), ro(item_x.display_stop), item_x.response_key, item_x.correct, ro(item_x.response_start), ro(item_x.response_end), iti_current, item_x.trust, item_x.w_width, item_x.w_height, item_x.fullscreen
         ].map(el => el === undefined ? 'NA' : el).join("\t") + "\n";
-        // upload partial data after each 10 trials (for dropout analysis) [#23]
+        // upload partial data after each 10 trials (for dropout analysis) [#24]
         if (trial_number % 10 === 1) {
             upload_interim();
         }
@@ -404,7 +404,7 @@ const store_response = function() {
     }, iti.min);
 };
 
-// counter for inactivity and potential timing out [#44]
+// counter for inactivity and potential timing out [#48]
 let down_counter = false;
 const countdown = function() {
     if (inactivity === null) {

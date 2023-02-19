@@ -53,7 +53,7 @@ const capitalize = function(s) {
     return s && s[0].toUpperCase() + s.slice(1);
 };
 
-// alert to confirm or cancel unload (i.e., leaving the page by navigating away or closing the tab) [#17]
+// alert to confirm or cancel unload (i.e., leaving the page by navigating away or closing the tab) [#18]
 const keep_state = function() {
     window.onbeforeunload = (event) => {
         unload_attemps.push(performance.now());
@@ -83,7 +83,7 @@ const to_sec = function(num) {
     return (Math.round(num / 1000));
 };
 
-// enter fullscreen mode [#18]
+// enter fullscreen mode [#19]
 const fullscreen_on = function(doit = false) {
     document.getElementById('screen_feed').style.display = 'none';
     if (doit != true && (misc.demo || typeof sim_user === "function")) {
@@ -131,7 +131,7 @@ const fullscreen_state = function(on = () => { }, off = () => { }) {
     }
 };
 
-// listen for change in fullscreen mode [#20]
+// listen for change in fullscreen mode [#21]
 const fullscreen_change = function(on, off) {
     window.onresize = function() {
         fullscreen_state(on, off);
@@ -144,7 +144,7 @@ const char_count = function(event, feed_elem) {
 };
 
 
-// check if the user's device is mobile [#13]
+// check if the user's device is mobile [#14]
 const is_mobile = function() {
     let check = false;
     (function(a) {
@@ -167,12 +167,12 @@ const spinner_content = /*html*/ `
             </svg>
         </div>`;
 
-// function to switch divisions (virtual pages) [#4]
+// function to switch divisions (virtual pages) [#5]
 const switch_div = function(current, next, wait = 0, fulls = true) {
     document.getElementById(current).style.display = 'none';
     window.scrollTo(0, 0);
     if (fulls) {
-        // enter fullscreen mode [#18]
+        // enter fullscreen mode [#19]
         fullscreen_on();
     }
     if (wait === 0) {
@@ -182,13 +182,13 @@ const switch_div = function(current, next, wait = 0, fulls = true) {
             document.getElementById(next).style.display = 'block';
         }, wait);
     }
-    // record the (upcoming) division name and the current time [#5]
+    // record the (upcoming) division name and the current time [#6]
     div_switches['p' + Object.keys(div_switches).length + '_' + next] = Math.round(performance.now() / 600) / 100 + wait;
     upload_interim();
 };
 
 
-/* Drag and Drop mechanism functions [#drag] */
+/* Drag and Drop mechanism functions [#38] */
 // allow dropping items (when appropriate)
 const let_drop = function(ev) {
     let t = ev.target;
@@ -215,7 +215,7 @@ const drop = function(ev) {
     }
 };
 
-// gets current geo position
+// gets current geo position [#39]
 const current_position = function() {
     navigator.geolocation.getCurrentPosition(pos => {
         console.log(pos.coords); // the coordinates are returned and can be used here
@@ -232,9 +232,9 @@ const current_position = function() {
     });
 };
 
-/* VIDEO restrictions */
+// setting audiovisual media restrictions [#40]
 const restrict_media = (() => {
-    let tracked_time;
+    let tracked_time = 0;
     return function(media_elem, callback) {
         // in case of manual seeking (winding back/forward), reset to original time point
         media_elem.onseeking = () => {
@@ -262,7 +262,7 @@ const restrict_media = (() => {
 })();
 
 
-// calculates the similarity between any two given texts
+// calculating the similarity between any two given texts [#35]
 // results are by default in percentage (0-100)
 const similar_text = function(first, second, percent = true) {
     // discussed at: https://locutus.io/php/similar_text/
