@@ -104,9 +104,9 @@ const load_language = function() {
     lg_script.onload = function() {
         // when the language file is loaded, modify as needed and add to HTML
         if (misc.device === 'mobile') {
-            tt.pausing = tt.pausing.replace('%RESTART%', tt.tap_restart);
+            tt.pausing = tt.pausing.replace('{{RESTART}}', tt.tap_restart);
         } else {
-            tt.pausing = tt.pausing.replace('%RESTART%', tt.key_restart);
+            tt.pausing = tt.pausing.replace('{{RESTART}}', tt.key_restart);
         }
         // insert texts of the chosen language into HTML [#16]
         Object.keys(tt).forEach((id) => {
@@ -152,12 +152,16 @@ const ready_texts = function() {
     }
     // adjust texts based on required device type
     if (misc.device === 'mobile') {
-        tt.block_text[0] = tt.block_text[0].replace('%DEVICE%', tt.mobile_instructions);
+        tt.block_text[0] = tt.block_text[0].replace('{{DEVICE}}', tt.mobile_instructions);
         document.getElementById("device_type").innerHTML = tt.device_mobile;
     } else {
-        tt.block_text[0] = tt.block_text[0].replace('%DEVICE%', tt.desktop_instructions);
+        tt.block_text[0] = tt.block_text[0].replace('{{DEVICE}}', tt.desktop_instructions);
         document.getElementById("device_type").innerHTML = tt.device_desktop;
     }
+
+    // provide Subject ID at the end, for potential verification
+    document.getElementById("subj_id").innerText = misc.subject_id;
+
 
     // disabling pasting or dropping text to the feedback text area element [#33]
     // (not necessarily a good idea here, but serves as an example)
@@ -249,10 +253,10 @@ const set_media = function() {
     let med_elem;
     if (misc.media.endsWith('.wav')) {
         med_elem = document.getElementById('aud_id');
-        document.getElementById('aud_id').textContent = tt.attend_audio;
+        document.getElementById('media_info').textContent = tt.attend_audio;
     } else {
         med_elem = document.getElementById('vid_id');
-        document.getElementById('aud_id').textContent = tt.attend_video;
+        document.getElementById('media_info').textContent = tt.attend_video;
     }
     med_elem.preload = 'auto';
     med_elem.src = './media/' + misc.media;
@@ -261,6 +265,10 @@ const set_media = function() {
         // on media finishing: enable the button to move on
         document.getElementById('media_submitter').disabled = false;
     });
+    if (misc.demo) {
+        // if demo, enable button in the first place, to move on anytime
+        document.getElementById('media_submitter').disabled = false;
+    }
     console.log(med_elem);
 };
 

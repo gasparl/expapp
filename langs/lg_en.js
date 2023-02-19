@@ -153,13 +153,13 @@ const tt = {
     </button>
     <br>
     `,
-    
+
     // story sequence
     story_instruction: 'Below, you will see some pictures. Please put them in meaningful horizontal order (drag and drop with a mouse cursor).',
 
     // media instruction
-    attend_audio:'Please listen to the full audio track attentively.',
-    attend_video:'Please watch the full video attentively.',
+    attend_audio: 'Please listen to the full audio track attentively.',
+    attend_video: 'Please watch the full video attentively.',
 
     // main task instructions
     mobile_instructions:  /*html*/`
@@ -173,22 +173,19 @@ const tt = {
         <p>
             For a "left response", tap the left-side button, for a "right response", tap the right-side button.
         </p>`,
-    desktop_instructions:  /*html*/`
+    desktop_instructions: `
         <p>
-          During the task, please use the left-side "D" for a "left response" and the right-side "K" keys for a "right response".
-        </p>`,
+          During the task, please use the left-side <kbd>`+ keys.left.toUpperCase() + `</kbd> for a "left response" and the right-side <kbd>` + keys.right.toUpperCase() + `</kbd> keys for a "right response.
+        </p > `,
     block_text: [
         // block 1
         /*html*/`
         <p class='title'>
             Task Instructions
-        <p>
-            <b><span id='practice_repeat_id'></span></b>
         </p>
+        <b><span id='practice_repeat_id'></span></b>
 
-        </p>
-
-            %DEVICE%
+            {{DEVICE}}
 
         <p>
             Each one or two seconds, in each trial, there will be a left arrow symbol (← or <-) or a right arrow symbol (→ or ->) displayed on the
@@ -262,7 +259,7 @@ const tt = {
     key_correct: 'Correct!', // when correct response is chosen
     key_wrong: 'Wrong!', // when wrong response is chosen
     too_slow: 'Too slow!', // when no response is given within the response time limit
-    pausing:  /*html*/ `<b style='border:1px red;'>You are currently taking a break. %RESTART% Please continue within 10 minutes! (Time remaining: <span id = "countdown"></span>)</b>`,
+    pausing:  /*html*/ `<b style='border:1px red;'>You are currently taking a break. {{RESTART}} Please continue within 10 minutes! (Time remaining: <span id = "countdown"></span>)</b>`,
     tap_restart: 'Tap either button to continue!',
     key_restart: 'Press space to continue!',
     screen_feed: /*html*/ `Please use <button type="button" style="font-size:35px;" onclick="fullscreen_on();">this button</button> to switch back to fullscreen mode.`,
@@ -362,6 +359,9 @@ const tt = {
                     <br>
                     <span id="pass_id">[Please wait, the link is not yet available.]</span>
                 </span>
+                <br>
+                <br>
+                You may also use the following code to verify your participation: <b><span id="subj_id"></span></b>
                 <br>
                 <br>
                 <p id="save_success" style="display:none;">

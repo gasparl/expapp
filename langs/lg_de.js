@@ -182,7 +182,7 @@ const tt = {
 
         </p>
 
-            %DEVICE%
+            {{DEVICE}}
 
         <p>
             Bei jedem Versuch wird alle ein bis zwei Sekunden ein linkes Pfeilsymbol (← oder <-) oder ein rechtes Pfeilsymbol (→ oder ->) auf dem Display angezeigt.
@@ -255,7 +255,7 @@ const tt = {
     key_correct: 'Richtig!', // wenn die richtige Antwort gewählt wurde
     key_wrong: 'Falsch!', // wenn die falsche Antwort gewählt wird
     too_slow: 'Zu langsam!', // wenn innerhalb der Antwortzeit keine Antwort gegeben wird
-    pausing:  /*html*/ `<b style='border:1px red;'>Sie machen gerade eine Pause. %RESTART% Bitte fahren Sie innerhalb von 10 Minuten fort! (Verbleibende Zeit: <span id = "countdown"></span>)</b>`,
+    pausing:  /*html*/ `<b style='border:1px red;'>Sie machen gerade eine Pause. {{RESTART}} Bitte fahren Sie innerhalb von 10 Minuten fort! (Verbleibende Zeit: <span id = "countdown"></span>)</b>`,
     tap_restart: 'Tippen Sie auf eine der beiden Tasten, um fortzufahren!',
     key_restart: 'Drücken Sie die Leertaste, um fortzufahren!',
     screen_feed: /*html*/ `Bitte verwenden Sie <button type="button" style="font-size:35px;" onclick="fullscreen_on();">diesen Button</button>, um wieder in den Vollbildmodus zu wechseln.`,
