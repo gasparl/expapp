@@ -287,8 +287,8 @@ const trial_listener = function() {
         };
     }
 
-    // in case of practice trials, set up response time (window) limit
-    if (phase === 'practice') {
+    // in case of practice trials or stop signals, set up response time (window) limit
+    if (phase === 'practice' || item_x.ssd !== 0) {
         response_window = setTimeout(() => {
             document.onkeydown = null;
             document.onkeyup = null;
