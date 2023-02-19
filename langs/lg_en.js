@@ -153,6 +153,15 @@ const tt = {
     </button>
     <br>
     `,
+    
+    // story sequence
+    story_instruction: 'Below, you will see some pictures. Please put them in meaningful horizontal order (drag and drop with a mouse cursor).',
+
+    // media instruction
+    attend_audio:'Please listen to the full audio track attentively.',
+    attend_video:'Please watch the full video attentively.',
+
+    // main task instructions
     mobile_instructions:  /*html*/`
         <p>
             During the task, you will see two buttons at the bottom of the screen, both like the one below.
@@ -168,10 +177,6 @@ const tt = {
         <p>
           During the task, please use the left-side "D" for a "left response" and the right-side "K" keys for a "right response".
         </p>`,
-
-    story_instruction: 'Below, you will see some pictures. Please put them in meaningful horizontal order (drag and drop with a mouse cursor).',
-
-    // main task instructions
     block_text: [
         // block 1
         /*html*/`

@@ -2,7 +2,7 @@
 /*jshint esversion: 6 */
 
 // this variable serves here to easily set the starting div for testing
-const start_div = 'media';
+const start_div = 'intro';
 // Here, the first div (ID) is 'intro'. To quickly test other pages (e.g. layout), switch the ID.
 // (notable other divisions: 'prelim', 'rt_instructions', 'rt_task', 'followup', 'ending')
 
@@ -249,13 +249,15 @@ const set_media = function() {
     let med_elem;
     if (misc.media.endsWith('.wav')) {
         med_elem = document.getElementById('aud_id');
+        document.getElementById('aud_id').textContent = tt.attend_audio;
     } else {
         med_elem = document.getElementById('vid_id');
+        document.getElementById('aud_id').textContent = tt.attend_video;
     }
     med_elem.preload = 'auto';
     med_elem.src = './media/' + misc.media;
     med_elem.style.display = 'block';
-    secure_media(med_elem, () => {
+    restrict_media(med_elem, () => {
         // on media finishing: enable the button to move on
         document.getElementById('media_submitter').disabled = false;
     });
