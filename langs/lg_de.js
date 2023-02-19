@@ -3,17 +3,16 @@
 
 // all texts in the website (except for initial compatibility warning) in German
 // (for illustration only: has not been proofread by a native speaker)
-
 const tt = {
     notdesktop:
-        /*html*/`Sie scheinen ein Smartphone oder Tablet zu benutzen. Um dieses Experiment durchzuführen, müssen Sie leider einen Desktop-Computer verwenden. Sie können das Experiment von einem Desktop-Computer aus neu starten (die Website öffnen).
+        /*html*/`Sie scheinen ein Smartphone oder Tablet zu benutzen. Um das vorliegende Experiment durchzuführen, müssen Sie leider einen Desktop-Computer verwenden. Sie können das Experiment von einem Desktop-Computer aus neu starten (die Website öffnen).
         <br /><br />
         Wenn Sie sicher sind, dass dies ein Fehler ist, klicken Sie <b><u><a onclick="move_to_prelim('notdesktop');">hier</a></u></b>, um fortzufahren.`
     ,
     notmobile:
-            /*html*/`Sie scheinen einen Desktop zu benutzen. Um das vorliegende Experiment durchzuführen, müssen Sie leider ein Smartphone verwenden. Sie können das Experiment von einem Smartphone aus neu starten (die Website öffnen).
-            <br /><br />
-            Wenn Sie sicher sind, dass dies ein Fehler ist, tippen Sie <b><u><a onclick="move_to_prelim('notmobile');">hier</a></u></b>, um fortzufahren.`
+        /*html*/`Sie scheinen einen Desktop zu benutzen. Um das vorliegende Experiment durchzuführen, müssen Sie leider ein Smartphone verwenden. Sie können das Experiment von einem Smartphone aus neu starten (die Website öffnen).
+        <br /><br />
+        Wenn Sie sicher sind, dass dies ein Fehler ist, tippen Sie <b><u><a onclick="move_to_prelim('notmobile');">hier</a></u></b>, um fortzufahren.`
     ,
 
     intro_text:
@@ -48,7 +47,7 @@ const tt = {
 
             <p><b>Zahlung:</b>
                 <br>
-                Die Aufgabe dauert etwa 10 Minuten. Sie sollte in einer Sitzung durchgeführt werden, ohne lange (mehr als ein paar Minuten) Pausen.
+                Diese Aufgabe dauert etwa 10 Minuten. Sie sollte in einer Sitzung durchgeführt werden, ohne lange (mehr als ein paar Minuten) Pausen.
                 <span id="pay_info">
                     Ihre gültig abgeschlossene Teilnahme wird mit 2 GBP belohnt.
                 </span>
@@ -63,7 +62,7 @@ const tt = {
             <p><b>Technische Anforderungen:</b>
             <br>
                 <span id='device_type'></span> Wir empfehlen dringend, den Browser Google Chrome oder Mozilla Firefox für
-                diesen Test. Bevor Sie beginnen, schalten Sie bitte den Browser in den Vollbildmodus (drücken Sie <kbd>F11</kbd> oder, auf dem Mac, <kbd>Strg</kbd>+<kbd>Befehlstaste</kbd>+<kbd>F</kbd> oder <kbd>Fn</kbd>+<kbd>F</kbd>), andernfalls wird er nach Ihrer Zustimmung automatisch umgeschaltet. Der Vollbildmodus sollte während des gesamten Experiments zur Reaktionszeit beibehalten werden (andernfalls erhalten Sie eine Warnung und können erst nach dem Zurückschalten in den Vollbildmodus fortfahren).
+                diesen Test. Bevor Sie beginnen, schalten Sie bitte den Browser in den Vollbildmodus (drücken Sie <kbd>F11</kbd> oder, auf dem Mac, <kbd>Strg</kbd>+<kbd>Befehl</kbd>+<kbd>F</kbd> oder <kbd>Fn</kbd>+<kbd>F</kbd>), andernfalls wird er nach Ihrer Zustimmung automatisch umgeschaltet. Der Vollbildmodus sollte während des gesamten Experiments zur Reaktionszeit beibehalten werden (andernfalls erhalten Sie eine Warnung und können erst nach dem Zurückschalten in den Vollbildmodus fortfahren).
                 <br>Diese Anwendung wurde sorgfältig getestet, aber wir können keine Verantwortung für mögliche technische Probleme übernehmen.
                 Ausgaben
                 im Zusammenhang mit Ihrer
@@ -99,8 +98,9 @@ const tt = {
     prelim: /*html*/`
     Bitte geben Sie uns die folgenden demografischen Informationen über sich selbst.
     <br><br>
-    <br> Alter:
-    <input type="number" onkeypress='return /[0-9]/i.test(event.key)' id="age_id" size="4">
+    <br> Alter:    
+    <input type="number" onkeypress='return /[0-9]/i.test(event.key)'
+    oninput="this.value=this.value.slice(0,2)" min='1' max='99' id="age_id" size="4">
     | <input type="checkbox" id="age_na" onchange="age_check(event);" />
     <label for="age_na" style="font-size: 90%;">Möchte ich nicht sagen</label>
 
@@ -120,7 +120,7 @@ const tt = {
     <select id="education">
         <option value="">- wählen Sie eine -</option>
         <option value="1">Elementarschule</option>
-        <option value="2">Gymnasium</option>
+        <option value="2">High School</option>
         <option value="3">Berufsausbildung / Berufsausbildung</option>
         <option value="4">Einige Hochschule</option>
         <option value="5">Bachelor-Abschluss</option>
@@ -154,6 +154,15 @@ const tt = {
     </button>
     <br>
     `,
+
+    // story sequence
+    story_instruction: 'Unten siehst du einige Bilder. Bitte bringe sie in eine sinnvolle horizontale Reihenfolge (mit dem Mauszeiger ziehen und ablegen).',
+
+    // media instruction
+    attend_audio: 'Bitte hören Sie sich die gesamte Tonspur aufmerksam an.',
+    attend_video: 'Bitte sehen Sie sich das gesamte Video aufmerksam an.',
+
+    // main task instructions
     mobile_instructions:  /*html*/`
         <p>
             Während des Vorgangs sehen Sie unten auf dem Bildschirm zwei Schaltflächen, die wie die unten abgebildete aussehen.
@@ -163,24 +172,19 @@ const tt = {
         </div>
 
         <p>
-            Für eine "linke Antwort" tippen Sie auf die linke Taste, für eine "rechte Antwort" tippen Sie auf die rechte Taste.
+            Für eine "linke Antwort" tippen Sie auf die linke Schaltfläche, für eine "rechte Antwort" tippen Sie auf die rechte Schaltfläche.
         </p>`,
-    desktop_instructions:  /*html*/`
+    desktop_instructions: `
         <p>
-          Während der Aufgabe benutzen Sie bitte die linke Taste "D" für eine "linke Antwort" und die rechte Taste "K" für eine "rechte Antwort".
-        </p>`,
-
-    // Anweisungen für die Hauptaufgabe
+          Während der Aufgabe verwenden Sie bitte die linken <kbd>`+ keys.left.toUpperCase() + `</kbd> Tasten für eine "linke Antwort" und die rechten <kbd>` + keys.right.toUpperCase() + `</kbd> Tasten für eine "rechte Antwort".
+        </p > `,
     block_text: [
         // Block 1
         /*html*/`
         <p class='title'>
             Anweisungen zur Aufgabe
-        <p>
-            <b><span id='practice_repeat_id'></span></b>
         </p>
-
-        </p>
+        <b><span id='practice_repeat_id'></span></b>
 
             {{DEVICE}}
 
@@ -198,6 +202,7 @@ const tt = {
          <button class="main_button" type="button" onclick='init_trials();'>Start</button>
         <br>
         <br>
+
         `,
         // Block 2
         /*html*/ `
@@ -246,11 +251,11 @@ const tt = {
     ],
     practice_repeat: /*html*/ `Du hattest zu wenige richtige Antworten, also musst du diese Übungsrunde wiederholen.`,
 
-    // Details zur Reaktionszeit der Hauptaufgabe
+    // main task response time details
     stop_signal: 'STOP!',
     tap_start: 'Tippen Sie auf eine der beiden Tasten, um zu starten!',
     key_start: 'Zum Starten die Leertaste drücken!',
-    tap_here: 'Tap here!', // auf Bildschirmtasten geschrieben
+    tap_here: 'Tap here!', // written on screen buttons
     key_astray: 'Ungültige Taste gedrückt! Die gültigen Tasten sind: <kbd>' + keys.left.toUpperCase() + '</kbd> (links) und <kbd>' + keys.right.toUpperCase() + '</kbd> (rechts)',
     key_correct: 'Richtig!', // wenn die richtige Antwort gewählt wurde
     key_wrong: 'Falsch!', // wenn die falsche Antwort gewählt wird
@@ -264,6 +269,7 @@ const tt = {
     followup:/*html*/ `
         Bitte geben Sie an, ob Sie mit der folgenden Aussage einverstanden sind:
         Meine Umgebung war während des Tests ruhig und gelassen.
+        <!-- [#32] -->
         <div class="likert">
             <label><input name="likert_example" type="radio" value="1" /><span>
                     Stimmt überhaupt nicht zu
@@ -285,6 +291,7 @@ const tt = {
         <hr>
         Um zu zeigen, dass Sie aufmerksam sind, klicken/tippen Sie bitte dreimal auf eines der folgenden Symbole
         Optionen.
+        <!-- [#37] -->
         <div id="attention_check_container">
             <div class="likert" onclick="attention_monitor(event);">
                 <label><input name="attention_example" type="radio" value="1" /><span>
@@ -297,10 +304,10 @@ const tt = {
                         Weder zustimmen noch nicht zustimmen
                     </span></label>
                 <label><input name="attention_example" type="radio" value="4" /><span>
-                        Stimmt zu
+                        Zustimmen
                     </span></label>
                 <label><input name="attention_example" type="radio" value="5" /><span>
-                        Stimmt voll und ganz zu
+                        Stimme voll und ganz zu
                     </span></label>
             </div>
         </div>
@@ -308,6 +315,7 @@ const tt = {
         <hr>
         Wie sehr hat Ihnen dieses Experiment gefallen? <br>
         <i>(Klicken Sie irgendwo auf den Schieberegler, um das Ausmaß Ihres Vergnügens zu markieren.)</i>
+        <!-- [#33] -->
         <div class="scale_a_container">
             <div class="scale_a_left">
                 Überhaupt nicht
@@ -337,9 +345,10 @@ const tt = {
     attention_passed: 'Danke, dass Sie aufgepasst haben. Sie können fortfahren.',
     please_answer_all: 'Bitte beantworten Sie alle Fragen auf dieser Seite.',
     please_answer_required: 'Bitte beantworten Sie die erforderlichen Fragen.',
+    please_place_items: 'Bitte platzieren Sie alle Bilder in den Zielboxen.',
     no_paste: 'Bitte fügen Sie nichts in dieses Feld ein.',
 
-    // letzte Teilung
+    // last division
     ending:
         /*html*/ `
                 <b>Das ist das Ende des Experiments, danke für die Teilnahme!</b>
@@ -350,6 +359,9 @@ const tt = {
                     <br>
                     <span id="pass_id">[Bitte warten, der Link ist noch nicht verfügbar.]</span>
                 </span>
+                <br>
+                <br>
+                Sie können auch den folgenden Code verwenden, um Ihre Teilnahme zu bestätigen: <b><span id="subj_id"></span></b>
                 <br>
                 <br>
                 <p id="save_success" style="display:none;">
@@ -369,5 +381,6 @@ const tt = {
                 <br>
                 <br>
             `,
+    unload_warn: 'Wenn Sie diese Seite verlassen, geht Ihr gesamter Fortschritt verloren. Sind Sie sicher, dass Sie fortfahren wollen?',
     class_next: 'Weiter'
 };
