@@ -1,5 +1,9 @@
 This is a boilerplate project connected to the tutorial "Creating Web Applications for Online Psychological Experiments: A Hands-On Technical Guide Including a Boilerplate". It is intended as a boilerplate (template) for creating web applications for online psychological experiments via the HTML/CSS/JavaScript framework from scratch, without any additional software.
 
+# Getting the scripts
+
+The application can be downloaded or forked/cloned via Git. The simplest way is use the green "Clone or download" button on this page, chosing Download ZIP. After downloading, extract the zip file into a single folder.
+
 ### Contributions
 
 Contributions are always very welcome. When contributing to this repository:
