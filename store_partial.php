@@ -24,9 +24,9 @@ if (strlen($user_data ?? '') < 50 or substr($request->fname_post ?? '', -4) !== 
     die("Failed");
 }
 
-# set path relative to server root; extend it with the file name [#23]
+# set path relative to server root; extend it with the file name [n23]
 $path = $_SERVER['DOCUMENT_ROOT'] . "/../data/template_results_part/";
 $file_name = $path . $user_ip . '_' . $request->fname_post;
 
-# save the file (if the file already exists, overwrite it [#25])
+# save the file (if the file already exists, overwrite it [n25])
 file_put_contents($file_name, $user_data);

@@ -6,7 +6,7 @@ const start_div = 'intro';
 // Here, the first div (ID) is 'intro'. To quickly test other pages (e.g. layout), switch the ID.
 // (notable other divisions: 'prelim', 'rt_instructions', 'rt_task', 'followup', 'ending')
 
-// miscellaneous subject data [#31]
+// miscellaneous subject data [n31]
 const misc = {
     subject_id: rchoice("CDFGHJKLMNPQRSTVWXZ") +
         rchoice("AEIOUY") +
@@ -25,10 +25,10 @@ const file_name =
     misc.subject_id +
     ".txt";
 
-// code to execute when the web app is entirely loaded [#9]
+// code to execute when the web app is entirely loaded [n9]
 document.addEventListener("DOMContentLoaded", function() {
 
-    // check browser compatibility with relevant JavaScript methods [#11]
+    // check browser compatibility with relevant JavaScript methods [n11]
     try {
         const sum = function(x, y, z) {
             return x + y + z;
@@ -48,7 +48,7 @@ document.addEventListener("DOMContentLoaded", function() {
     misc.screen_h = screen.height;
     misc.screen_w = screen.width;
     misc.browser_name = jscd.browser;
-    // misc.browser_name may be used to restrict browser types [#54]
+    // misc.browser_name may be used to restrict browser types [n54]
     // for example, to allow only Google Chrome:
     // if (misc.browser_name != "Chrome") {
     //     // here: code to show warning and/or prevent continuation
@@ -68,7 +68,7 @@ document.addEventListener("DOMContentLoaded", function() {
     check_params();
 });
 
-// get URL query parameters: language, device, etc. [#12]
+// get URL query parameters: language, device, etc. [n12]
 const check_params = function() {
     const params = new URLSearchParams(location.search);
 
@@ -82,7 +82,7 @@ const check_params = function() {
         misc.device = 'desktop';
     }
 
-    // check whether it's demonstration version [#53]
+    // check whether it's demonstration version [n53]
     if (params.get('demo') !== null) {
         misc.demo = true;
         // (this variable is then used everywhere else to decide whether the app 
@@ -91,7 +91,7 @@ const check_params = function() {
 
     // get user ID, here from Prolific
     misc.user_id = params.get('PROLIFIC_PID');
-    // get language [#12]
+    // get language [n12]
     misc.lg = params.get('lg');
     // load language and then show displays
     load_language();
@@ -99,7 +99,7 @@ const check_params = function() {
 
 // load language based on query
 const load_language = function() {
-    // load texts in the given language [#17]
+    // load texts in the given language [n17]
     const lg_script = document.createElement('script');
     lg_script.onload = function() {
         // when the language file is loaded, modify as needed and add to HTML
@@ -108,7 +108,7 @@ const load_language = function() {
         } else {
             tt.pausing = tt.pausing.replace('{{RESTART}}', tt.key_restart);
         }
-        // insert texts of the chosen language into HTML [#17]
+        // insert texts of the chosen language into HTML [n17]
         Object.keys(tt).forEach((id) => {
             if (id.startsWith('class_')) {
                 [...document.getElementsByClassName(id)].forEach((elem) => {
@@ -129,7 +129,7 @@ const load_language = function() {
         // load and add audio/video
         set_media();
     };
-    // if the specified language file not found, default to English [#16]
+    // if the specified language file not found, default to English [n16]
     lg_script.onerror = function() {
         misc.lg = 'en';
         console.log('Language defaults to English.');
@@ -163,7 +163,7 @@ const ready_texts = function() {
     document.getElementById("subj_id").innerText = misc.subject_id;
 
 
-    // disabling pasting or dropping text to the feedback text area element [#34]
+    // disabling pasting or dropping text to the feedback text area element [n34]
     // (not necessarily a good idea here, but serves as an example)
     ['onpaste', 'ondrop'].forEach(onevent => {
         document.getElementById('feedback')[onevent] = function(e) {
@@ -185,7 +185,7 @@ const consent_submit = function() {
         misc.user_id = document.getElementById("prolific_id").value;
     }
 
-    // go to the preliminaries division unless wrong device is detected [#15]
+    // go to the preliminaries division unless wrong device is detected [n15]
     if (misc.device === 'mobile') {
         if (!is_mobile()) {
             switch_div('intro', 'notmobile');
@@ -236,7 +236,7 @@ const set_images = function() {
             alert('Failed to load images! Try reloading the page or contact lkcsgaspar@gmail.com');
         });
 
-    // set up drag and drop mechanism [#drag]
+    // set up drag and drop mechanism [ndrag]
     // for divs containing the images at start
     // and the target divs where the images are to be moved to
     img_names.forEach(img_nam => {
@@ -278,7 +278,7 @@ const set_screen = function() {
     // restrict leaving the page, set up alert
     keep_state();
 
-    // warn if user exits fullscreen [#21]
+    // warn if user exits fullscreen [n21]
     fullscreen_change(() => {
         // on user entering full screen mode, the warning message is hidden
         document.getElementById('screen_feed').style.display = 'none';
@@ -311,7 +311,7 @@ const lang_check = function(e) {
 
 // submit preliminary information (such as demographics)
 const prelim_submit = (() => {
-    // "clicked_once" to keep track of whether the user tried to proceed already [#36]
+    // "clicked_once" to keep track of whether the user tried to proceed already [n36]
     // (this self-executing function serves to keep this variable local)
     let clicked_once = false;
     return function() {
@@ -344,7 +344,7 @@ const prelim_submit = (() => {
 
 // submit story sequence results
 const sequence_submit = (() => {
-    // "clicked_once" to keep track of whether the user tried to proceed already [#36]
+    // "clicked_once" to keep track of whether the user tried to proceed already [n36]
     // (this self-executing function serves to keep this variable local)
     let clicked_once = false;
     return function() {
@@ -371,7 +371,7 @@ const media_submit = function() {
     init_block(); // initiate first block of the response time task
 };
 
-// monitor clicks on attention checker item and remove on three clicks completed [#37]
+// monitor clicks on attention checker item and remove on three clicks completed [n37]
 const attention_monitor = (() => {
     // "attention_clicks" to keep track of clicks to indicate attention
     // (this self-executing function serves to keep this variable local)
@@ -390,7 +390,7 @@ const attention_monitor = (() => {
 
 // submit follow-up information division, go to end division, upload final data
 const followup_submit = (() => {
-    // "clicked_once" to keep track of whether the user tried to proceed already [#36]
+    // "clicked_once" to keep track of whether the user tried to proceed already [n36]
     // (this self-executing function serves to keep this variable local)
     let clicked_once = false;
     return function() {
@@ -417,15 +417,15 @@ const followup_submit = (() => {
 
 // arrange file for the final format in which it is to be downloaded
 const prep_file = function() {
-    // join all div switch info [#6]
+    // join all div switch info [n6]
     misc.page_times = Object.keys(div_switches).map(function(key) {
         return (key + '_' + div_switches[key]);
     }).join('|');
     misc.full_duration = Math.round((performance.now() / 600) / 100 - Object.values(div_switches)[0]);
-    return (subject_results + JSON.stringify(misc)); // JSON.stringify for appending miscellaneous data as JSON [#31]
+    return (subject_results + JSON.stringify(misc)); // JSON.stringify for appending miscellaneous data as JSON [n31]
 };
 
-// have the file downloaded manually, via pop-up [#28]
+// have the file downloaded manually, via pop-up [n28]
 const dl_as_file = function() {
     const blobx = new Blob([prep_file()], {
         type: 'text/plain'
@@ -442,7 +442,7 @@ const dl_as_file = function() {
 };
 
 
-// store partial interim data during the experiment [#22]
+// store partial interim data during the experiment [n22]
 const upload_interim = function() {
     if (misc.demo) {
         return;
@@ -471,7 +471,7 @@ const upload_interim = function() {
     // });
 };
 
-// store final full data at the end of the experiment [#22]
+// store final full data at the end of the experiment [n22]
 const upload_final = function() {
     document.getElementById("retry_button").disabled = true;
     if (misc.demo) {
@@ -494,11 +494,11 @@ const upload_final = function() {
     })
         .then(response => response.text())
         .then(echoed => {
-            // in case of successful server connection [#27]
+            // in case of successful server connection [n27]
             console.log(echoed);
             document.documentElement.style.cursor = 'auto';
             if (echoed.startsWith("http")) {
-                // in case of message indicating successful file saving [#29]
+                // in case of message indicating successful file saving [n29]
                 // (here "http" indicates the reception of a completion link)
                 document.getElementById('save_fail').style.display = 'none';
                 document.getElementById('save_success').style.display = 'block';
@@ -514,7 +514,7 @@ const upload_final = function() {
             }
         })
         .catch((error) => {
-            // in case of server error [#28]
+            // in case of server error [n28]
             console.log('Request failed: ', error);
             document.documentElement.style.cursor = 'auto';
             upload_fail();
@@ -522,7 +522,7 @@ const upload_final = function() {
         });
 };
 
-// if the data was not saved successfully [#28]
+// if the data was not saved successfully [n28]
 const upload_fail = function() {
     document.getElementById("retry_button").disabled = false;
     document.getElementById('retry_spin').innerHTML = '';

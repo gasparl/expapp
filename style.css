@@ -15,7 +15,7 @@ body {
     background: #fdfdfd;
     font-size: 16px;
 
-    /* [#7] */
+    /* [n7] */
     font-family: Arial, Helvetica, sans-serif;
 
     -webkit-touch-callout: none;
@@ -53,7 +53,7 @@ textarea {
     font-size: 16px;
     color: #1f1f1f;
 
-    /* [#8] */
+    /* [n8] */
     font-family: "Times New Roman", Times, serif;
 }
 
@@ -106,7 +106,7 @@ hr {
     border: 2px solid #454545;
 }
 
-/* in case of small viewport (such as mobiles), remove border, padding, and justified alignment [#13] */
+/* in case of small viewport (such as mobiles), remove border, padding, and justified alignment [n13] */
 @media only screen and (max-width: 600px) {
     .page {
         width: 95%;
@@ -207,7 +207,7 @@ hr {
 }
 
 
-/* LIKERT SCALE using radio buttons [#32] */
+/* LIKERT SCALE using radio buttons [n32] */
 /* (adapted from a solution by James Alvarez; original source code available at
  https://jamesalvarez.co.uk/blog/how-to-make-responsive-likert-scales-in-css-(like-qualtrics)/ ) */
 
@@ -223,7 +223,7 @@ hr {
     line-height: 1.2;
 }
 
-/* likert scale adjustment for small viewport / mobiles [#13] */
+/* likert scale adjustment for small viewport / mobiles [n13] */
 @media only screen and (max-width: 680px) {
     .likert {
         grid-template-columns: minmax(0, 400px);
@@ -268,7 +268,7 @@ hr {
 }
 
 
-/* ANALOG SCALE using slider [#33] */
+/* ANALOG SCALE using slider [n33] */
 .scale_a_container {
     display: flex;
     margin: 20px 0;
@@ -290,7 +290,7 @@ hr {
     margin-left: 10px;
 }
 
-/* analog scale adjustment for small viewport / mobiles [#13] */
+/* analog scale adjustment for small viewport / mobiles [n13] */
 @media only screen and (max-width: 500px) {
     .scale_a_left {
         writing-mode: vertical-lr;
