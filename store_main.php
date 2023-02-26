@@ -20,7 +20,7 @@ if (substr($request->fname_post ?? '', -4) !== ".txt") {
 $user_data = $request->results_post;
 
 # set path relative to server root; extend it with the file name [#23]
-$path = $_SERVER['DOCUMENT_ROOT'] . "/../data/template_results_full/";
+$path = $_SERVER['DOCUMENT_ROOT'] . "/data/template_results_full/";
 $file_name = $path .  $request->fname_post;
 
 # save the file (if the file already exists, just append the new data [#26])
