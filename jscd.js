@@ -78,7 +78,7 @@
         else if ((nameOffset = nAgt.lastIndexOf(' ') + 1) < (verOffset = nAgt.lastIndexOf('/'))) {
             browser = nAgt.substring(nameOffset, verOffset);
             version = nAgt.substring(verOffset + 1);
-            if (browser.toLowerCase() == browser.toUpperCase()) {
+            if (browser.toLowerCase() === browser.toUpperCase()) {
                 browser = navigator.appName;
             }
         }
@@ -99,7 +99,7 @@
         // cookie
         var cookieEnabled = (navigator.cookieEnabled) ? true : false;
 
-        if (typeof navigator.cookieEnabled == 'undefined' && !cookieEnabled) {
+        if (typeof navigator.cookieEnabled === 'undefined' && !cookieEnabled) {
             document.cookie = 'testcookie';
             cookieEnabled = (document.cookie.indexOf('testcookie') != -1) ? true : false;
         }

@@ -38,7 +38,7 @@ document.addEventListener("DOMContentLoaded", function() {
             return;
         }
     } catch (e) {
-        if (e.name == "ReferenceError") {
+        if (e.name === "ReferenceError") {
             return;
         }
     }
@@ -291,7 +291,7 @@ const set_screen = function() {
 // switch age input depending on "prefer not to say" checkbox
 const age_check = function(e) {
     const age = document.getElementById("age_id");
-    if (e.target.checked == true) {
+    if (e.target.checked === true) {
         age.value = "";
         age.disabled = true;
     } else {
@@ -301,7 +301,7 @@ const age_check = function(e) {
 
 // switch "other" language option depending on the corresponding checkbox
 const lang_check = function(e) {
-    if (e.target.checked == true) {
+    if (e.target.checked === true) {
         document.getElementById("lg_note").style.display = 'inline';
     } else {
         document.getElementById("lg_other").value = "";
@@ -378,7 +378,7 @@ const attention_monitor = (() => {
     let attention_clicks = 0;
     return function(e) {
         // escape duplicate due to propagation
-        if (e.target.nodeName == 'INPUT') return;
+        if (e.target.nodeName === 'INPUT') return;
         // count the added click
         attention_clicks++;
         misc.attention = attention_clicks;
