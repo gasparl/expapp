@@ -22,7 +22,7 @@ const DT = (() => {
     return Object.freeze({
         display(start, end, duration) {
             if (loop && start instanceof Function &&
-                ((end === undefined && duration == undefined) ||
+                ((end === undefined && duration === undefined) ||
                     (end instanceof Function && isNum(duration)))) {
                 tasks.push({
                     init: start,
