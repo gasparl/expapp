@@ -103,7 +103,7 @@ const practice_valid = (() => {
 const generate_items = function() {
     const new_items = [];
     // demo: 1 repetition per item and SSD type; otherwise, practice: 1, main block: 5
-    const num_reps = misc.demo ? 1 : (phase == 'practice' ? 1 : 5);
+    const num_reps = misc.demo ? 1 : (phase === 'practice' ? 1 : 5);
     const left_stims = ['<-', '←'];
     const right_stims = ['->', '→'];
 
@@ -176,8 +176,8 @@ const start_listener = function() {
     } else {
         document.onkeydown = function(e) {
 
-            if (e.key == " " ||
-                e.code == "Space") {
+            if (e.key === " " ||
+                e.code === "Space") {
                 document.onkeydown = null; // stop listening for the keypress
                 // restart inactivity checker [#48]
                 countdown_off();
@@ -261,9 +261,9 @@ const trial_listener = function() {
         };
     } else {
         document.onkeydown = function(e) {
-            if (e.key == keys.left || e.key == keys.right) {
+            if (e.key === keys.left || e.key === keys.right) {
                 document.onkeydown = null; // stop listening for the keypress
-                if (e.key == keys.left) {
+                if (e.key === keys.left) {
                     process_response(e, 'left');
                 } else {
                     process_response(e, 'right');
@@ -381,7 +381,7 @@ const store_response = function() {
 
     // if practice, collect responses for evaluation per each direction [#44]
     if (phase === 'practice') {
-        if (practice_rts[item_x.direction] == null) {
+        if (practice_rts[item_x.direction] === null) {
             practice_rts[item_x.direction] = [];
         }
         practice_rts[item_x.direction].push(item_x.correct === true ? ro(item_x.response_start - item_x.display_arrow) : 0);
