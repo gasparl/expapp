@@ -269,7 +269,7 @@ const tt = {
     followup:/*html*/ `
         Bitte geben Sie an, ob Sie mit der folgenden Aussage einverstanden sind:
         Meine Umgebung war während des Tests ruhig und gelassen.
-        <!-- [ref32] -->
+        <!-- [n32] -->
         <div class="likert">
             <label><input name="likert_example" type="radio" value="1" /><span>
                     Stimmt überhaupt nicht zu
@@ -291,7 +291,7 @@ const tt = {
         <hr>
         Um zu zeigen, dass Sie aufmerksam sind, klicken/tippen Sie bitte dreimal auf eines der folgenden Symbole
         Optionen.
-        <!-- [ref37] -->
+        <!-- [n37] -->
         <div id="attention_check_container">
             <div class="likert" onclick="attention_monitor(event);">
                 <label><input name="attention_example" type="radio" value="1" /><span>
@@ -315,7 +315,7 @@ const tt = {
         <hr>
         Wie sehr hat Ihnen dieses Experiment gefallen? <br>
         <i>(Klicken Sie irgendwo auf den Schieberegler, um das Ausmaß Ihres Vergnügens zu markieren.)</i>
-        <!-- [ref33] -->
+        <!-- [n33] -->
         <div class="scale_a_container">
             <div class="scale_a_left">
                 Überhaupt nicht
