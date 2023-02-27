@@ -2,9 +2,10 @@
 /*jshint esversion: 6 */
 
 // this variable serves here to easily set the starting div for testing
-const start_div = 'intro';
+let start_div = 'intro';
 // Here, the first div (ID) is 'intro'. To quickly test other pages (e.g. layout), switch the ID.
 // (notable other divisions: 'prelim', 'rt_instructions', 'rt_task', 'followup', 'ending')
+// Note: this can also be modified via the "p" parameter of the query string (e.g. ?p=prelim)
 
 // miscellaneous subject data [n31]
 const misc = {
@@ -87,6 +88,12 @@ const check_params = function() {
         misc.demo = true;
         // (this variable is then used everywhere else to decide whether the app 
         // should act as in case of a demo version)
+    }
+
+    // check starting page (if any)
+    const page = params.get('p');
+    if (document.getElementById(page) && document.getElementById(page).classList.contains('page')) {
+        start_div = page;
     }
 
     // get user ID, here from Prolific
