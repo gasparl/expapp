@@ -143,6 +143,8 @@ const load_language = function() {
         load_language();
     };
     lg_script.src = './langs/lg_' + misc.lg + '.js';
+    // more secure but less flexible version:
+    // {"en":"./langs/lg_en.js","de":"./langs/lg_de.js"}[misc.lg]
     document.head.appendChild(lg_script);
 };
 
