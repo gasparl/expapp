@@ -808,6 +808,8 @@ undesired browser (\[n54\]).
 
 ---
 
+### Footnotes
+
 [^1]: The notable exception is when an element’s size is specified
     relative to its parent element’s size. For instance, a smaller
     square within a larger square may be specified to have height and
