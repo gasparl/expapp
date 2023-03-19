@@ -102,7 +102,7 @@ guide](https://developer.mozilla.org/en-US/docs/Learn/Getting_started_with_the_w
 and online courses (e.g., [edX](https://www.edx.org/)) for learning all
 the basics. For authoritative and up-to-date information on any specific
 JS method, a most recommended source is the official website of the
-Mozilla Developer Network (https://developer.mozilla.org/; maintained
+[Mozilla Developer Network](https://developer.mozilla.org/) (maintained
 jointly by Mozilla, Google, Microsoft, and Samsung, among others). The
 rest of this tutorial assumes a basic understanding of these three
 languages.
@@ -113,8 +113,8 @@ address (uniform resource locator; URL) of the directory of the files,
 without the filename, the web server by default usually returns the
 “*index.html*” file, which is subsequently loaded into the browser.
 Hence, for example, instead of writing
-https://gasparl.github.io/expapp/index.html, one can just write
-https://gasparl.github.io/expapp. Often, there is just one CSS file,
+<https://gasparl.github.io/expapp/index.html>, one can just write
+<https://gasparl.github.io/expapp>. Often, there is just one CSS file,
 often named “*style.css*” or similar, that contains all styles for the
 web page. However, in the boilerplate, there is an additional
 “*rt\_task.css*” file, related to the styling of the behavioral part of
@@ -187,7 +187,7 @@ under this directory (to be sourced via the “index.html” file).
 Having just one HTML file essentially gives a single-page application
 (SPA). This means that the entire ExpApp will remain, throughout the
 experimental procedure, at the same URL (e.g.,
-https://homepage.univie.ac.at/gaspar.lukacs/sst\_exp). This (a) prevents
+<https://homepage.univie.ac.at/gaspar.lukacs/sst_exp>). This (a) prevents
 users arbitrarily navigating back and forth between pages (or even
 skipping ones, by manually changing the URL); (b) requires only a
 single-time loading (hence subsequent pages will not require any loading
@@ -341,14 +341,14 @@ experiment may be done in different languages. In this case, the
 language may be indicated via a “query string”: a text attached to the
 URL, separated by a question mark. For example, to indicate that the
 given ExpApp should be in English, one may write
-https://gasparl.github.io/expapp?lg=en, while, for a German version, one
-may write https://gasparl.github.io/expapp?lg=de. The information for
+<https://gasparl.github.io/expapp?lg=en>, while, for a German version, one
+may write <https://gasparl.github.io/expapp?lg=de>. The information for
 the “lg” parameter can then be accessed in JS (\[n12\]). There can be
 multiple parameters. For instance,
-https://gasparl.github.io/expapp?lg=de&device=mobile may indicate an
+<https://gasparl.github.io/expapp?lg=de&device=mobile> may indicate an
 ExpApp in German and intended for mobile devices. The mere presence or
 absence of a parameter may also be used, for simplicity. For instance,
-https://gasparl.github.io/expapp?lg=de&device=mobile&demo could indicate
+<https://gasparl.github.io/expapp?lg=de&device=mobile&demo> could indicate
 (apart from German language and mobile version) that the given ExpApp is
 to be run in demonstration (demo) mode (see under Pretesting).
 
@@ -357,7 +357,7 @@ the demo version is indicated just as in the examples above, but the
 device type, which is restricted to either mobile or desktop (and
 excludes, e.g., tablets), is indicated via an “m” parameter’s presence
 (for mobiles) or absence (for desktops), for example,
-https://gasparl.github.io/expapp?lg=de&m&demo. While the layout may be
+<https://gasparl.github.io/expapp?lg=de&m&demo>. While the layout may be
 dynamically adjusted based on the
 “[viewport](https://developer.mozilla.org/en-US/docs/Web/CSS/Media_Queries/Using_media_queries)”
 (currently viewed area) width measured in CSS pixels (\[n13\]), this is
