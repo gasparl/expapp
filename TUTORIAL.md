@@ -724,7 +724,7 @@ advance at the start, before they consent to participate.)
 
 For best precision for the timing of the display changes (such as the
 appearance of a stimulus), it is
-[recommended](https://doi.org/10.3758/s13428-021-01694-3) to implement a
+[recommended](https://doi.org/10.3758/s13428-022-01835-2) to implement a
 continual recursive call of the
 [`requestAnimationFrame`](https://developer.mozilla.org/en-US/docs/Web/API/window/requestAnimationFrame)
 JS function, and to execute each display change within a new
