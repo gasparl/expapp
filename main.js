@@ -456,7 +456,7 @@ const upload_interim = function() {
     if (misc.demo) {
         return;
     }
-    fetch('./store_partial.php', {
+    fetch('./php/store_partial.php', {
         method: 'post',
         headers: {
             'Content-Type': 'application/json',
@@ -490,7 +490,7 @@ const upload_final = function() {
     }
     document.getElementById('pass_id').innerHTML += spinner_content;
     document.documentElement.style.cursor = 'wait';
-    fetch('./store_main.php', {
+    fetch('./php/store_main.php', {
         method: 'post',
         headers: {
             'Content-Type': 'application/json',
