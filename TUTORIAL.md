@@ -806,6 +806,8 @@ participation using any browser except the desired one(s). Participants
 may be warned and prevented to continue in case of the detection of any
 undesired browser (\[n54\]).
 
+---
+
 [^1]: The notable exception is when an element’s size is specified
     relative to its parent element’s size. For instance, a smaller
     square within a larger square may be specified to have height and
