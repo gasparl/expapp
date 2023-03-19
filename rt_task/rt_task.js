@@ -381,7 +381,7 @@ const store_response = function() {
 
     // if practice, collect responses for evaluation per each direction [n44]
     if (phase === 'practice') {
-        if (practice_rts[item_x.direction] === null) {
+        if (practice_rts[item_x.direction] == undefined) {
             practice_rts[item_x.direction] = [];
         }
         practice_rts[item_x.direction].push(item_x.correct === true ? ro(item_x.response_start - item_x.display_arrow) : 0);
