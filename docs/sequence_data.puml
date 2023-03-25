@@ -1,27 +1,49 @@
 @startuml
-title High level Overview of Experiment flow
+'!theme cerulean-outline plain
+!theme cerulean-outline
+title High-Level Overview of Experiment Flow
 autonumber "<b>0."
 actor "Participant" as P
 participant "Browser" as B
-participant "ExpApp Server" as S
-actor "Experimenter" as E
+participant "Server" as S
+actor "Researcher" as E
 '
 'E -> P : Send URL
 'P -> B : Visit URL
 'B <-> S : Retrieve website
 'B -> P : Display website
-loop while trials completed < 100
-    P <-> B : completes trial
-    alt every tenth trial completed
+loop While sections ongoing
+    P <-> B : Completes section
+    alt Section completed
         B -> S : Send partial data
         S -> S : Store partial data to partial data file
     end
-    B -> P : Present next trial
+    B -> P : Present next section
 end
-P -> B : Complete final trial
-B <-> S : Send complete data
-S -> S : Store complete data to complete data file
-B -> P : Present Trial Feedback
-S -> E : Notify experiment is complete
-E -> E : Analyze results (exp_webapp_analysis.R)
+P -> B : Complete final section
+B -> S : Send complete data
+alt On send success
+S -> S : Store complete data to file
+B -> P : Feedback about storage success
+S -> E : Researcher can access the data
+else On send failure
+    B -> P : Feedback about storage failure
+    alt Retry sending to server
+        B <- P : Click "Retry" button
+
+        autonumber stop
+        B -> S : Resend complete data
+        note right
+            (See step 6.)
+        end note
+        autonumber resume
+    else Manually download complete data file 
+        B <- P : Click "Download" button
+        autonumber stop
+        B -> P : Data file stored locally
+        autonumber resume
+        P -> E : Send data file via email
+    end
+end
+E -> E : Analyze results
 @enduml
