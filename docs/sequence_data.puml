@@ -1,0 +1,27 @@
+@startuml
+title High level Overview of Experiment flow
+autonumber "<b>0."
+actor "Participant" as P
+participant "Browser" as B
+participant "ExpApp Server" as S
+actor "Experimenter" as E
+'
+'E -> P : Send URL
+'P -> B : Visit URL
+'B <-> S : Retrieve website
+'B -> P : Display website
+loop while trials completed < 100
+    P <-> B : completes trial
+    alt every tenth trial completed
+        B -> S : Send partial data
+        S -> S : Store partial data to partial data file
+    end
+    B -> P : Present next trial
+end
+P -> B : Complete final trial
+B <-> S : Send complete data
+S -> S : Store complete data to complete data file
+B -> P : Present Trial Feedback
+S -> E : Notify experiment is complete
+E -> E : Analyze results (exp_webapp_analysis.R)
+@enduml
