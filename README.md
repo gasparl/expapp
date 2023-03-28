@@ -1,6 +1,6 @@
 This is a boilerplate project connected to the tutorial "Creating Web Applications for Online Psychological Experiments: A Hands-On Technical Guide Including a Boilerplate". It is intended as a boilerplate (template) for creating web applications for online psychological experiments via the HTML/CSS/JavaScript framework from scratch, without any additional software.
 
-Here, [TUTORIAL.md](https://gasparl.github.io/expapp/TUTORIAL.html) is the extended and open-source technical tutorial.
+Here, [TUTORIAL.md](https://gasparl.github.io/expapp/docs/TUTORIAL.html) is the extended and open-source technical tutorial.
 
 ### Getting the scripts
 
@@ -8,7 +8,7 @@ The application can be downloaded or forked/cloned via Git. The simplest way is 
 
 ### Contributions
 
-Contributions are always very welcome both to the scripts and to the [tutorial](https://github.com/gasparl/expapp/blob/main/TUTORIAL.md). When contributing to this repository:
+Contributions are always very welcome both to the scripts and to the [tutorial](https://github.com/gasparl/expapp/blob/main/docs/TUTORIAL.md). When contributing to this repository:
 
 - First discuss the change you wish to make via [issues](https://github.com/gasparl/expapp/issues "Issues") (or  via [email](https://gasparl.github.io/#contact));
 - Keep the syle of your code consistent with that of the current one (indentation, ES6, etc.);
