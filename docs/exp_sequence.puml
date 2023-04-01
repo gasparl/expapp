@@ -25,8 +25,8 @@ P -> B : Complete final section
 B -> S : Send complete data
 group In case of send success
 S -> S : Store complete data to file
-B -> P : Feedback about storage success
 S -> E : Researcher can access the data
+B -> P : Feedback about storage success
 end 
 group In case of send failure
     B -> P : Feedback about storage failure
