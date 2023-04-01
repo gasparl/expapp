@@ -1,7 +1,8 @@
-@startuml
+@startuml exp_sequence
 '!theme cerulean-outline plain
 !theme cerulean-outline
-title High-Level Overview of Experiment Flow
+skinparam backgroundColor white
+title High-Level Client-Server Overview of Experiment Flow
 autonumber "<b>0."
 actor "Participant" as P
 participant "Browser" as B
@@ -12,9 +13,9 @@ actor "Researcher" as E
 'P -> B : Visit URL
 'B <-> S : Retrieve website
 'B -> P : Display website
-loop While sections ongoing
+group While experiment sections are ongoing
     P <-> B : Completes section
-    alt Section completed
+    group Section completed
         B -> S : Send partial data
         S -> S : Store partial data to partial data file
     end
@@ -22,13 +23,14 @@ loop While sections ongoing
 end
 P -> B : Complete final section
 B -> S : Send complete data
-alt On send success
+group In case of send success
 S -> S : Store complete data to file
 B -> P : Feedback about storage success
 S -> E : Researcher can access the data
-else On send failure
+end 
+group In case of send failure
     B -> P : Feedback about storage failure
-    alt Retry sending to server
+    group Retry sending to server
         B <- P : Click "Retry" button
 
         autonumber stop
@@ -37,7 +39,8 @@ else On send failure
             (See step 6.)
         end note
         autonumber resume
-    else Manually download complete data file 
+    end
+    group Manually download complete data file 
         B <- P : Click "Download" button
         autonumber stop
         B -> P : Data file stored locally

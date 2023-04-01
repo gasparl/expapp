@@ -504,7 +504,7 @@ FTP client), but not to the public.
 
 All in all the experimental flow will look as in the sequence diagram below.
 
-![ExperimentFlow](media/sequence_data.png)
+![Experiment Flow](/media/exp_sequence.png)
 
 To more easily pretest an ExpApp, one may install a PHP server locally
 on one’s personal computer (there is a variety of freely available
