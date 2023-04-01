@@ -57,8 +57,8 @@ This tutorial is connected to an open-source boilerplate project at
 measures (multiple choice questions, scales, etc.) as well as,
 centrally, a stop-signal task (SST) as a common example for a
 psychological response time test. The code sections relevant to given
-topics are marked in the scripts with bracketed numbers as \[n1\],
-\[n2\], and so forth, and are cited via these numbers in the present
+topics are marked in the scripts with bracketed numbers as [\[n1\]](https://github.com/gasparl/expapp/search?q=n1),
+[\[n2\]](https://github.com/gasparl/expapp/search?q=n2), and so forth, and are cited via these numbers in the present
 tutorial. All modern text editors for programming (e.g., [Visual Studio
 Code](https://code.visualstudio.com/), [Sublime
 Text](https://www.sublimetext.com/)) allow searching an entire directory
@@ -67,7 +67,7 @@ repository](https://github.com/gasparl/expapp)). Hence one has to simply
 search for, for example, “n2” or “\[n2\]” (without quotes) to find the
 relevant functions or lines of code in the given script files. The
 GitHub repository can be searched directly too (e.g., as
-<https://github.com/gasparl/expapp/search?q=n2>).
+<https://github.com/gasparl/expapp/search?q=n2>; link here to the numbers throughout the tutorial).
 
 Due to its technical nature and despite not going into great detail (and
 not dwelling on advanced methods such as eye-tracking or 3D
@@ -194,21 +194,21 @@ single-time loading (hence subsequent pages will not require any loading
 time or even any internet connection at all); (c) provides an arguably
 easier-to-maintain, compact code structure; and (d) makes the script
 straightforward to integrate with JS-based frameworks for creating
-native (and/or cross-platform) apps. For one, the HTML `head` (\[n1\])
+native (and/or cross-platform) apps. For one, the HTML `head` ([\[n1\]](https://github.com/gasparl/expapp/search?q=n1))
 needs only be defined and modified in one file. This `head` section may
 follow the content of what is generally prescribed for websites in any
 regular tutorial. Still, for ExpApps specifically, it is good to keep in
 mind the option to disable auto-translation via Google Translate using
-the `<meta name="google" content="notranslate">` meta-tag (\[n2\]). For
+the `<meta name="google" content="notranslate">` meta-tag ([\[n2\]](https://github.com/gasparl/expapp/search?q=n2)). For
 further assurance in this respect (as well as other potential
 auto-translators), the HTML `body` may also be given the class
 “`notranslate`” as well as “`no`” for the “`translate`” property, altogether
-as `<body class="notranslate" translate="no">` (\[n3\]). If one might
+as `<body class="notranslate" translate="no">` ([\[n3\]](https://github.com/gasparl/expapp/search?q=n3)). If one might
 wish to prevent indexing by search engines (i.e., not to be listed in
 the search results of Google and the like; e.g., due to sensitive
 material), one may also add a meta-tag with the “`noindex`” rule; and, to
 prevent the indexing of links within the ExpApp, “`nofollow`” may also be
-added to the same meta tag (\[n4\]).
+added to the same meta tag ([\[n4\]](https://github.com/gasparl/expapp/search?q=n4)).
 
 To create a single-page application (i.e., having one HTML file), one
 may use `<div>` (division) tags to create virtual pages (i.e., the
@@ -216,11 +216,11 @@ different views during the experiment, such as informed consent, then
 demographic data input, then response time experiment, etc.). Each
 division tag (i.e., tag pair; `<div>` `</div>`) contains all content of
 the given page. Switching among such divisions may be aided by a
-dedicated JS function (\[n5\]) that makes one division disappear (via
+dedicated JS function ([\[n5\]](https://github.com/gasparl/expapp/search?q=n5)) that makes one division disappear (via
 CSS, `display: none`), and the other appear (e.g., `display: block`), and at
 the same time may execute some additional operations, such as saving the
 time of the division switch (together with the upcoming page’s name;
-\[n6\]).
+[\[n6\]](https://github.com/gasparl/expapp/search?q=n6)).
 
 Commonly used ad blocking browser extension automatically hide HTML
 elements based on their `id` and `class` names. Therefore, to keep all
@@ -296,10 +296,10 @@ near-identical Helvetica) or another sans-serif font type (e.g., on
 Android, Roboto) that is for the human eye generally hardly
 distinguishable from Arial. Hence, one may simply specify font family
 for the entire ExpApp as body `{ font-family: Arial, Helvetica,
-sans-serif; }` (\[n7\]), so that the app will always display all fonts in
+sans-serif; }` ([\[n7\]](https://github.com/gasparl/expapp/search?q=n7)), so that the app will always display all fonts in
 Arial or, if that is unavailable, a very similar sans serif font type.
 (In the boilerplate, user input text has a different, serif font type
-\[n8\], so that it would be more distinct from the rest of the text in
+[\[n8\]](https://github.com/gasparl/expapp/search?q=n8), so that it would be more distinct from the rest of the text in
 the ExpApp – but this is of course just a personal preference.)
 
 ## Basic Operational (JS) Structure
@@ -308,7 +308,7 @@ the ExpApp – but this is of course just a personal preference.)
 JS functions can be set up via “listeners” to be executed when certain
 [events](https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Building_blocks/Events)
 (e.g., user input) are detected by the web app. One may use the
-`DOMContentLoaded` event listener (\[n9\]) to execute certain JS functions
+`DOMContentLoaded` event listener ([\[n9\]](https://github.com/gasparl/expapp/search?q=n9)) to execute certain JS functions
 as soon as the web app is entirely loaded (i.e., when the HTML content
 of the app is downloaded along with all JS code).
 
@@ -323,9 +323,9 @@ However, given the rapid development of browsers, it should be assumed
 that nearly all, if not all, users have a browser supporting ES6.[^2]
 Even so, it does not hurt to implement an easy safety check. Namely, the
 initial HTML file may contain a simple warning that the browser is
-outdated (or JS is disabled, though this is unlikely nowadays; \[n10\]).
+outdated (or JS is disabled, though this is unlikely nowadays; [\[n10\]](https://github.com/gasparl/expapp/search?q=n10)).
 Then, the JS code may start with some ES6 features (especially those
-used in the given ExpApp \[n11\]). On the off chance that any of these
+used in the given ExpApp [\[n11\]](https://github.com/gasparl/expapp/search?q=n11)). On the off chance that any of these
 are not supported, the JS script exists at that point and the page
 remains with the warning; otherwise, the JS script continues and
 executes the first division switch from the warning to the start page of
@@ -343,7 +343,7 @@ URL, separated by a question mark. For example, to indicate that the
 given ExpApp should be in English, one may write
 <https://gasparl.github.io/expapp?lg=en>, while, for a German version, one
 may write <https://gasparl.github.io/expapp?lg=de>. The information for
-the “lg” parameter can then be accessed in JS (\[n12\]). There can be
+the “lg” parameter can then be accessed in JS ([\[n12\]](https://github.com/gasparl/expapp/search?q=n12)). There can be
 multiple parameters. For instance,
 <https://gasparl.github.io/expapp?lg=de&device=mobile> may indicate an
 ExpApp in German and intended for mobile devices. The mere presence or
@@ -360,18 +360,18 @@ excludes, e.g., tablets), is indicated via an “m” parameter’s presence
 <https://gasparl.github.io/expapp?lg=de&m&demo>. While the layout may be
 dynamically adjusted based on the
 “[viewport](https://developer.mozilla.org/en-US/docs/Web/CSS/Media_Queries/Using_media_queries)”
-(currently viewed area) width measured in CSS pixels (\[n13\]), this is
+(currently viewed area) width measured in CSS pixels ([\[n13\]](https://github.com/gasparl/expapp/search?q=n13)), this is
 not ideal for ensuring device type for the whole experiment. For
 instance, with this approach, if the participant starts the ExpApp in a
 small window (hence small viewport), the device would be incorrectly
 categorized as mobile. Instead, one may try detection via the operating
-system information accessible in JS (\[n14\]). Nonetheless, there is no
+system information accessible in JS ([\[n14\]](https://github.com/gasparl/expapp/search?q=n14)). Nonetheless, there is no
 standardized or well-established approach for this, and hence no
 guarantee for correct classifications in all cases. One solution, as
 implemented in the boilerplate, is to warn participants in case of wrong
 device detected, but offer them the option to override this and proceed
 with the experiment, in case they are sure that their device type is in
-fact correct and was incorrectly categorized (\[n15\]).
+fact correct and was incorrectly categorized ([\[n15\]](https://github.com/gasparl/expapp/search?q=n15)).
 
 #### *Multilingual Experiments*
 
@@ -381,11 +381,11 @@ language (in the boilerplate, two such files serve as examples,
 “*lg\_en.js*” for English, “*lg\_de.js*” for German), where each
 contains a JS “dictionary” object with all the various texts of the
 given ExpApp. On page load, the desired language is detected from the
-query string (or otherwise defaults to English \[n16\]), the
+query string (or otherwise defaults to English [\[n16\]](https://github.com/gasparl/expapp/search?q=n16)), the
 corresponding language file (with the given language’s dictionary) is
 loaded, and, based on a match between element IDs and the dictionary
 keys, all texts of the given language are inserted into the HTML
-(\[n17\]).
+([\[n17\]](https://github.com/gasparl/expapp/search?q=n17)).
 
 ### Precautionary Measures
 
@@ -413,7 +413,7 @@ other participants, in this case the test is restarted anew at this
 arbitrary point). Therefore, it seems better to just disable back
 navigation and to show a warning and ask for confirmation when a
 participant tries to leave the page. Both can be easily implemented in
-JS (\[n18\]).
+JS ([\[n18\]](https://github.com/gasparl/expapp/search?q=n18)).
 
 #### *Fullscreen*
 
@@ -426,11 +426,11 @@ input, such as a keypress or a click on an element.[^3] A reasonable
 approach may be to enter fullscreen when the participant consents on the
 first page with a button click, and, in case the participant manually
 exits the fullscreen, to reenter fullscreen on each division switch
-(\[n19\]). In case of behavioral experiments, when keeping fullscreen
+([\[n19\]](https://github.com/gasparl/expapp/search?q=n19)). In case of behavioral experiments, when keeping fullscreen
 mode is relatively more important, user responses (e.g. keypresses) may
-also be used for reentering fullscreen (\[n20\]), and one may even show
+also be used for reentering fullscreen ([\[n20\]](https://github.com/gasparl/expapp/search?q=n20)), and one may even show
 a warning text in case of leaving fullscreen, with a button option to
-reenter it (\[n21\]). Lastly, an extreme solution may be to monitor all
+reenter it ([\[n21\]](https://github.com/gasparl/expapp/search?q=n21)). Lastly, an extreme solution may be to monitor all
 possible user input events on the entire page, and have all of them
 trigger fullscreen mode. However, unless crucial, one could also just
 respect the participant’s decision not to use fullscreen and allow them
@@ -479,7 +479,7 @@ incoming individual data as single text files.
 The PHP files provided in the boilerplate (“store\_main.php” and
 “store\_partial.php”) can be used for almost any ExpApp, since
 essentially all they do is just write any text content data sent from JS
-(\[n22\]) to a new file created on the server. One detail to highlight
+([\[n22\]](https://github.com/gasparl/expapp/search?q=n22)) to a new file created on the server. One detail to highlight
 however is regarding data accessibility. Within a top directory of the
 server user (i.e., here, the researcher), web spaces are provided under
 a subdirectory typically named “html,” which is the web root, and under
@@ -498,7 +498,7 @@ Hence, the full path to the folder named “data” at the top directory
 
 `$path = $_SERVER['DOCUMENT_ROOT'] . "/../data/"`
 
-(where the dot in-between concatenates the two path parts; \[n23\]).
+(where the dot in-between concatenates the two path parts; [\[n23\]](https://github.com/gasparl/expapp/search?q=n23)).
 Files saved to this path will be accessible by the server user (via an
 FTP client), but not to the public.
 
@@ -529,7 +529,7 @@ their biasing effects on surveys, but they may in fact impact behavioral
 data collection as well. Hence, partial data may also be intermittently
 stored on the server during behavioral data collection at a certain
 desired interval (e.g., in the boilerplate, having about hundred trials
-altogether, at every tenth trial \[n24\]), saving all data up to that
+altogether, at every tenth trial [\[n24\]](https://github.com/gasparl/expapp/search?q=n24)), saving all data up to that
 point. These are steps 2 and 3 in the Experiment Flow diagram.
 
 In the boilerplate, partial data file names start with each given
@@ -539,7 +539,7 @@ ExpApp from the same IP during an ongoing experiment.[^7] Storing each
 new partial file separately is generally superfluous (although one may
 choose to append new partial data to the same file); the PHP code in the
 boilerplate simply overwrites the partial file on each new saving
-(\[n25\]).
+([\[n25\]](https://github.com/gasparl/expapp/search?q=n25)).
 
 ### Complete Data
 
@@ -548,24 +548,24 @@ file that is separate from the partial files. This is step 6 of the sequence dia
 that none of the already stored complete data files may be in any way
 erased or damaged, in case of an existing file with the same name, the
 PHP code in the boilerplate appends the new content to the end of the
-previous content, leaving the latter intact, step 7 of the sequence diagram (\[n26\]). The JS function
+previous content, leaving the latter intact, step 7 of the sequence diagram ([\[n26\]](https://github.com/gasparl/expapp/search?q=n26)). The JS function
 on the client side awaits the server response and provides corresponding
-feedback to the participant, step 8 of the sequence diagram (\[n27\]). In case of any sort of issue
+feedback to the participant, step 8 of the sequence diagram ([\[n27\]](https://github.com/gasparl/expapp/search?q=n27)). In case of any sort of issue
 (e.g., temporary loss of internet connection), the participant is
 offered two options: (a) a retry button via which saving the file at the
 server is reattempted, and (b) a download button via which the results
-files may be manually downloaded (\[n28\]) and sent via email to the
+files may be manually downloaded ([\[n28\]](https://github.com/gasparl/expapp/search?q=n28)) and sent via email to the
 researcher. In case of successful storage (on the first or any
 subsequent attempts), a success message is shown[^8] (and the warning
-regarding leaving the page is disabled; \[n29\]).
+regarding leaving the page is disabled; [\[n29\]](https://github.com/gasparl/expapp/search?q=n29)).
 
 ### Data Format
 
 Data format may particularly be up to preference, but one convenient way
-is to keep behavioral data in single lines per trial (\[n30\]), while
+is to keep behavioral data in single lines per trial ([\[n30\]](https://github.com/gasparl/expapp/search?q=n30)), while
 keeping all other, miscellaneous (e.g., demographic) data in
 [JSON](https://en.wikipedia.org/wiki/JSON) (JavaScript Object Notation)
-format in the very last line of the file (\[n31\]). Web (and other) apps
+format in the very last line of the file ([\[n31\]](https://github.com/gasparl/expapp/search?q=n31)). Web (and other) apps
 for experimental data collection often include all miscellaneous data in
 each line of each trial (as constants, i.e., the same value in each line
 under the given column). However, in case of a great amount of such data
@@ -597,12 +597,12 @@ underneath, even though there is the arguably more elegant possibility
 of creating clickable (button-like)
 [labels](https://jamesalvarez.co.uk/blog/how-to-make-responsive-likert-scales-in-css-(like-qualtrics)/),
 which also allows easy adjustment for smartphones (by vertical
-alignment, as in the boilerplate \[n32\]).
+alignment, as in the boilerplate [\[n32\]](https://github.com/gasparl/expapp/search?q=n32)).
 
 Analog scales can be easily implemented via the input type “range,”
 which provides a certain default slider. For custom design however,
 which also ensures uniform look across browsers, these sliders may be
-modified via CSS (\[n33\]).
+modified via CSS ([\[n33\]](https://github.com/gasparl/expapp/search?q=n33)).
 
 Another option worth considering is that, unlike in case of a
 paper-based scale, one may easily measure the precise time of responses,
@@ -620,10 +620,10 @@ researcher. Still, for example, it seems prudent to prevent (or at least
 monitor and record) any manner of copy-pasting when participants are
 asked to write long repetitive texts, or in fact, considering the
 nowadays widely available artificial text and essay generators, any sort
-of long text (\[n34\][^9]). In case of text input with a given
+of long text ([\[n34\]](https://github.com/gasparl/expapp/search?q=n34)[^9]). In case of text input with a given
 requirement (e.g., manually typing in sentences to be copied) it may be
 useful to allow a certain percentage of typos. This can be done via a
-text-similarity calculator function (\[n35\]).
+text-similarity calculator function ([\[n35\]](https://github.com/gasparl/expapp/search?q=n35)).
 
 Regarding all questions, giving a “prefer not to answer” or similar
 option is widely recommended, partly out of ethical reasons (not to
@@ -635,7 +635,7 @@ that, to any given question, participants prefer not to give even
 answer. In that case, a warning may be given when they attempt to submit
 the answers (or continue to the next page). However, one may opt to only
 show the warning once, and allow passing on any subsequent attempt
-regardless of any completely unanswered questions (\[n36\]).
+regardless of any completely unanswered questions ([\[n36\]](https://github.com/gasparl/expapp/search?q=n36)).
 
 Best practices of [attention
 checks](https://doi.org/10.1016/j.jom.2017.06.001) are a whole separate
@@ -644,15 +644,15 @@ to think beyond conventional paper-based checks and to make use of
 technical possibilities for this purpose. For instance, instead of
 asking participants to select a specific answer on a Likert scale (which
 could however also happen by accident), they may rather be asked to
-click three times on any of the Likert scale items (\[n37\]). Of course,
+click three times on any of the Likert scale items ([\[n37\]](https://github.com/gasparl/expapp/search?q=n37)). Of course,
 it is better to use multiple attention checks throughout the experiment,
 each according to the specific task.
 
 Some further easy-to-do yet perhaps neglected possibilities in ExpApps
-are dragging and dropping items (\[n38\]) and geolocation (\[n39\]).
+are dragging and dropping items ([\[n38\]](https://github.com/gasparl/expapp/search?q=n38)) and geolocation ([\[n39\]](https://github.com/gasparl/expapp/search?q=n39)).
 Presenting video or audio, one may ensure that the given media is
 watched or listened to from the beginning to the end, and only once
-(\[n40\]). (In a real experiment, an initial sample audio or video clip
+([\[n40\]](https://github.com/gasparl/expapp/search?q=n40)). (In a real experiment, an initial sample audio or video clip
 could precede the main ones – this is omitted from the boilerplate for
 brevity.)
 
@@ -680,18 +680,18 @@ given. Namely, a typical and convenient method is to generate, preceding
 the start of each block, a list of objects where each object contains,
 as properties, the information for a single trial in the experiment
 (e.g., the text to be displayed, the color in which it is to be
-displayed, etc.; \[n41\]). Following this, the entire block can be run
+displayed, etc.; [\[n41\]](https://github.com/gasparl/expapp/search?q=n41)). Following this, the entire block can be run
 sequentially taking one object after another from the pre-generated list
 (until none is left), and, from each objects, the desired properties are
 accessed in order to correctly prepare and execute each given trial
-(\[n42\]).
+([\[n42\]](https://github.com/gasparl/expapp/search?q=n42)).
 
 Given the lack of supervision, in online experiments it is most
 recommended to include practice trials with trial-by-trial feedback
-regarding the correctness of responses (\[n43\]). In case of too few
+regarding the correctness of responses ([\[n43\]](https://github.com/gasparl/expapp/search?q=n43)). In case of too few
 valid responses (including too slow responses, as well as suspiciously
 fast ones, such as below 150 ms, indicating random responding), the
-entire practice phase may be asked to be repeated (\[n44\]). In the
+entire practice phase may be asked to be repeated ([\[n44\]](https://github.com/gasparl/expapp/search?q=n44)). In the
 boilerplate, there is maximum one repetition only, and at the second
 completion the participant is allowed to continue regardless of the
 ratio of valid responses. Trial-by-trial feedback, especially regarding
@@ -705,23 +705,23 @@ during the main phase.
 Given the lack of control, one should ideally record all available
 relevant information. While in regular experimental creators, pressing
 an invalid key is not usually recorded, it may be good practice to
-record this in online experiments (\[n45\]) and exclude such trials in
+record this in online experiments ([\[n45\]](https://github.com/gasparl/expapp/search?q=n45)) and exclude such trials in
 the subsequent analysis (i.e., when an invalid keypress precedes an
 otherwise valid keypress, this latter should not be considered valid
 either, since, evidently, the wrong keypress likely influenced its
 time). Apart from recording, the boilerplate also warns users in case of
-an incorrect keypress (\[n46\]; particularly useful when no
+an incorrect keypress ([\[n46\]](https://github.com/gasparl/expapp/search?q=n46); particularly useful when no
 trial-by-trial feedback is given otherwise). Finally, one may even
 record, for each user input (such as keypresses), whether it was
 simulated via JS or not (via the event’s
 [`isTrusted`](https://developer.mozilla.org/en-US/docs/Web/API/Event/isTrusted)
-property \[n47\]).[^10]
+property [\[n47\]](https://github.com/gasparl/expapp/search?q=n47)).[^10]
 
 The potential problems in case of lengthy interruption in case of
 closing the ExpApp were discussed above (section: Unloading the Web
 Page). However, it may also happen that a participant does not close the
 ExpApp but leaves it unattended. For this reason, inactivity may also be
-monitored and related warning may be given (\[n48\]). In the
+monitored and related warning may be given ([\[n48\]](https://github.com/gasparl/expapp/search?q=n48)). In the
 boilerplate, for example, a warning message is displayed in case of not
 pressing either possible response key for over ten seconds. The trials
 are also halted. (Otherwise, if there is a response time limit that
@@ -739,9 +739,9 @@ continual recursive call of the
 JS function, and to execute each display change within a new
 `requestAnimationFrame` call. In the boilerplate, a dedicated set of
 functions are provided in a separate “*disptime.js*” file. Using these
-functions, the recursive call may be easily started (\[n49\]) and
-stopped (\[n50\]), and the display change may be easily executed within
-a new `requestAnimationFrame` call (\[n51\]; including an optional second
+functions, the recursive call may be easily started ([\[n49\]](https://github.com/gasparl/expapp/search?q=n49)) and
+stopped ([\[n50\]](https://github.com/gasparl/expapp/search?q=n50)), and the display change may be easily executed within
+a new `requestAnimationFrame` call ([\[n51\]](https://github.com/gasparl/expapp/search?q=n51); including an optional second
 display change at a given time interval). Also for precise timing, image
 files to be displayed should be loaded in advance, should
 [preferably](https://doi.org/10.3758/s13428-021-01694-3) be small
@@ -763,7 +763,7 @@ the simulation functions for testing are all in the “*sim\_test.js*”
 file. The function executing keypress simulation can be made available
 or unavailable via dedicated functions (`test_on()` and `test_off()`).
 When the function is available, it is always called from the function
-that initiates each upcoming trial (\[n52\]). Thereby, in each block,
+that initiates each upcoming trial ([\[n52\]](https://github.com/gasparl/expapp/search?q=n52)). Thereby, in each block,
 the entire response time task will run automatically.
 
 For any ExpApp, a simplified, demo version may be created, which can be
@@ -777,7 +777,7 @@ hand, to serve as a demonstration for collaborators, reviewers, and the
 eventual readers of a published study. On the other hand, it may also
 serve to more easily pretest the main features of an ExpApp. As
 explained above, the demo version of the ExpApp can be indicated in the
-URL’s query string that is subsequently detected in JS (\[n53\]).
+URL’s query string that is subsequently detected in JS ([\[n53\]](https://github.com/gasparl/expapp/search?q=n53)).
 
 Again, uniform behavior (based on the specifications by the World Wide
 Web Consortium) is essential for web apps, and very unlikely to be
@@ -813,7 +813,7 @@ instead of desktop) should also be taken into account.
 Finally, if uniform appearance and behavior is crucial, one may disallow
 participation using any browser except the desired one(s). Participants
 may be warned and prevented to continue in case of the detection of any
-undesired browser (\[n54\]).
+undesired browser ([\[n54\]](https://github.com/gasparl/expapp/search?q=n54)).
 
 ---
 
