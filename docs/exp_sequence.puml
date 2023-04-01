@@ -2,7 +2,8 @@
 '!theme cerulean-outline plain
 !theme cerulean-outline
 skinparam backgroundColor white
-title High-Level Client-Server Overview of Experiment Flow
+skinparam defaultFontSize 18
+'title High-Level Client-Server Overview of Experiment Flow
 autonumber "<b>0."
 actor "Participant" as P
 participant "Browser" as B
@@ -14,39 +15,40 @@ actor "Researcher" as E
 'B <-> S : Retrieve website
 'B -> P : Display website
 group While experiment sections are ongoing
-    P <-> B : Completes section
+    P <-> B : Completing section
     group Section completed
         B -> S : Send partial data
-        S -> S : Store partial data to partial data file
+        S -> S : Store partial data
+        S -> E : Partial data available
     end
-    B -> P : Present next section
+    B -> P : Move to next section
 end
 P -> B : Complete final section
-B -> S : Send complete data
-group In case of send success
-S -> S : Store complete data to file
-S -> E : Researcher can access the data
-B -> P : Feedback about storage success
+B -> S : Send full data
+group In case of storage success
+S -> S : Store full data
+S -> E : Full data available
+B -> P : Storage success feedback
 end 
-group In case of send failure
-    B -> P : Feedback about storage failure
-    group Retry sending to server
+group In case of storage failure
+    B -> P : Storage failure feedback
+    group Option 1: Retry sending to server
         B <- P : Click "Retry" button
 
         autonumber stop
-        B -> S : Resend complete data
+        B -> S : Resend full data
         note right
-            (See step 6.)
+            (See step 7.)
         end note
         autonumber resume
     end
-    group Manually download complete data file 
+    group Option 2: Manually download full data file 
         B <- P : Click "Download" button
         autonumber stop
         B -> P : Data file stored locally
         autonumber resume
-        P -> E : Send data file via email
+        P -> E : Send full data file via email
     end
 end
-E -> E : Analyze results
+E -> E : Analyze data
 @enduml

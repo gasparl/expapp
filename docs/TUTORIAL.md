@@ -475,7 +475,6 @@ circumventing the complications of an SQL implementation, it is also
 much easier, during an ongoing experiment, to access and inspect
 incoming individual data as single text files.
 
-
 The PHP files provided in the boilerplate (“store\_main.php” and
 “store\_partial.php”) can be used for almost any ExpApp, since
 essentially all they do is just write any text content data sent from JS
@@ -502,10 +501,6 @@ Hence, the full path to the folder named “data” at the top directory
 Files saved to this path will be accessible by the server user (via an
 FTP client), but not to the public.
 
-All in all the experimental flow will look as in the sequence diagram below.
-
-[![Experiment Flow Diagram](/media/exp_sequence.png "Experiment Flow")](https://github.com/gasparl/expapp/blob/main/media/exp_sequence.png)
-
 To more easily pretest an ExpApp, one may install a PHP server locally
 on one’s personal computer (there is a variety of freely available
 easy-to-use applications for this purpose, e.g.,
@@ -530,7 +525,7 @@ data collection as well. Hence, partial data may also be intermittently
 stored on the server during behavioral data collection at a certain
 desired interval (e.g., in the boilerplate, having about hundred trials
 altogether, at every tenth trial [\[n24\]](https://github.com/gasparl/expapp/search?q=n24)), saving all data up to that
-point. These are steps 2 and 3 in the Experiment Flow diagram.
+point.
 
 In the boilerplate, partial data file names start with each given
 participant’s IP address, so that one may easily sort files based on
@@ -544,13 +539,13 @@ boilerplate simply overwrites the partial file on each new saving
 ### Complete Data
 
 At the end of the experiment, the JS function sends the full and complete data to the server, to be stored in a
-file that is separate from the partial files. This is step 6 of the sequence diagram. Here, to absolutely ensure
+file that is separate from the partial files. Here, to absolutely ensure
 that none of the already stored complete data files may be in any way
 erased or damaged, in case of an existing file with the same name, the
 PHP code in the boilerplate appends the new content to the end of the
-previous content, leaving the latter intact, step 7 of the sequence diagram ([\[n26\]](https://github.com/gasparl/expapp/search?q=n26)). The JS function
+previous content, leaving the latter intact ([\[n26\]](https://github.com/gasparl/expapp/search?q=n26)). The JS function
 on the client side awaits the server response and provides corresponding
-feedback to the participant, step 8 of the sequence diagram ([\[n27\]](https://github.com/gasparl/expapp/search?q=n27)). In case of any sort of issue
+feedback to the participant ([\[n27\]](https://github.com/gasparl/expapp/search?q=n27)). In case of any sort of issue
 (e.g., temporary loss of internet connection), the participant is
 offered two options: (a) a retry button via which saving the file at the
 server is reattempted, and (b) a download button via which the results
