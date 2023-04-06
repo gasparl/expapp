@@ -67,7 +67,7 @@ repository](https://github.com/gasparl/expapp)). Hence one has to simply
 search for, for example, “n2” or “\[n2\]” (without quotes) to find the
 relevant functions or lines of code in the given script files. The
 GitHub repository can be searched directly too (e.g., as
-<https://github.com/gasparl/expapp/search?q=n2>; link here to the numbers throughout the tutorial).
+<https://github.com/gasparl/expapp/search?q=n2>; linked here to the numbers throughout the tutorial).
 
 Due to its technical nature and despite not going into great detail (and
 not dwelling on advanced methods such as eye-tracking or 3D
@@ -357,7 +357,9 @@ the demo version is indicated just as in the examples above, but the
 device type, which is restricted to either mobile or desktop (and
 excludes, e.g., tablets), is indicated via an “m” parameter’s presence
 (for mobiles) or absence (for desktops), for example,
-<https://gasparl.github.io/expapp?lg=de&m&demo>. While the layout may be
+<https://gasparl.github.io/expapp?lg=de&m&demo>. 
+
+Such explicit specification for mobile devices seems warranted. While the layout may be
 dynamically adjusted based on the
 “[viewport](https://developer.mozilla.org/en-US/docs/Web/CSS/Media_Queries/Using_media_queries)”
 (currently viewed area) width measured in CSS pixels ([\[n13\]](https://github.com/gasparl/expapp/search?q=n13)), this is
