@@ -229,6 +229,8 @@ such as “`ad`,” “`ads`,” “`adv`,” “`advert`,” “`advertisement`
 “`banners`,” or variants that include these as identifiable segments, such
 as “`-ad-button-`” or “`##.header-ad`.”
 
+To explore and adjust the style (size, color, etc.) of any HTML element, one can at any point conveniently inspect and manually modify the CSS properties in any major browser’s [developer tools](https://developer.mozilla.org/en-US/docs/Learn/Common_questions/Tools_and_setup/What_are_browser_developer_tools) (“Inspector” tab; e.g., clicking on any element and selecting the “Inspect” option from the drop-down menu directly displays, in the Inspector, the given element’s CSS properties, which can be manually overwritten). Once the desired looks is achieved via the properties modified in the browser (which apply only to the loaded page, and are discarded as soon as the browser tab or page is closed), the same CSS properties can be adjusted accordingly in the local files too.
+
 ### Size, Color, and Font
 
 #### *Size*
@@ -303,6 +305,8 @@ Arial or, if that is unavailable, a very similar sans serif font type.
 the ExpApp – but this is of course just a personal preference.)
 
 ## Basic Operational (JS) Structure
+
+Similarly to CSS, any major browser’ developer tools (Console) may be used to very conveniently inspect or modify JS variables too, at any point of the experiment.
 
 ### On Document Load
 JS functions can be set up via “listeners” to be executed when certain
@@ -743,6 +747,8 @@ display change at a given time interval). Also for precise timing, image
 files to be displayed should be loaded in advance, should
 [preferably](https://doi.org/10.3758/s13428-021-01694-3) be small
 images, and displayed via either visibility or opacity change.
+
+To display complex stimuli (moving elements, images), some follow the prominent WebGL JS API (Web Graphics Library JS application programming interface; available in all modern browsers), some use third-party libraries such as PixiJS – however, these approaches, while convenient, have, to date and to our knowledge, no empirical proof for their supposed benefit. Again, empirical data can easily contradict anecdotal best practices – for example, as mentioned above, simple opacity or visibility changes have been proven optimal for image display, while WebGL canvas drawing was actually [found](https://doi.org/10.3758/s13428-022-01835-2) to be detrimental to timing precision. Therefore, at this point, we do not find it appropriate to make general recommendations for the use of any given libraries or APIs; instead, we encourage the empirical testing of the display timing (e.g., via photodiodes) whenever possible for any new ExpApp.
 
 ## Pretesting
 
