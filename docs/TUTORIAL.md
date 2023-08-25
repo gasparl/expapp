@@ -1,4 +1,4 @@
-# Creating Web Applications for Online Psychological Experiments: A Hands-On Technical Guide Including a Boilerplate
+# Creating Web Applications for Online Psychological Experiments: A Hands-On Technical Guide Including a template
 
 ## Table of Contents
 
@@ -52,7 +52,7 @@
 
 ## Introduction
 
-This tutorial is connected to an open-source boilerplate project at
+This tutorial is connected to an open-source template project at
 <https://github.com/gasparl/expapp>, which includes typical survey
 measures (multiple choice questions, scales, etc.) as well as,
 centrally, a stop-signal task (SST) as a common example for a
@@ -72,7 +72,7 @@ GitHub repository can be searched directly too (e.g., as
 Due to its technical nature and despite not going into great detail (and
 not dwelling on advanced methods such as eye-tracking or 3D
 simulations), this tutorial necessarily describes a relatively specific
-approach. Even more so, the boilerplate implements one very specific
+approach. Even more so, the template implements one very specific
 approach. Tasks can be designed and scripts can be written in many
 different ways, and everyone may have their own preferred
 implementation. In the end, however, browser-based experimentation is
@@ -116,11 +116,11 @@ Hence, for example, instead of writing
 <https://gasparl.github.io/expapp/index.html>, one can just write
 <https://gasparl.github.io/expapp>. Often, there is just one CSS file,
 often named “*style.css*” or similar, that contains all styles for the
-web page. However, in the boilerplate, there is an additional
+web page. However, in the template, there is an additional
 “*rt\_task.css*” file, related to the styling of the behavioral part of
 the experiment, which is somewhat distinct from the rest of the webpage,
 and therefore may be more conveniently stored and managed in a separate
-file. Finally, since the boilerplate includes a lot of JS code for a
+file. Finally, since the template includes a lot of JS code for a
 variety of different purposes, there are several files to contain these
 scripts. The most important ones are the following: (a) “*main.js*” –
 the main workflow of the experiment; (b) “*utils.js*” (within the
@@ -144,7 +144,7 @@ Preprocessor; originally: Personal Home Page).
 
 Using web servers and server-side languages may seem daunting at first,
 but for ExpApps, this is actually very easy. Here, we describe the
-proper procedure, and, in the boilerplate, we provide the necessary code
+proper procedure, and, in the template, we provide the necessary code
 (which can remain almost exactly the same for all experiments; for
 related details, see the section Data Storage below). Most universities
 have their own web servers and provide web space for employees and often
@@ -300,7 +300,7 @@ distinguishable from Arial. Hence, one may simply specify font family
 for the entire ExpApp as body `{ font-family: Arial, Helvetica,
 sans-serif; }` ([\[n7\]](https://github.com/gasparl/expapp/search?q=n7)), so that the app will always display all fonts in
 Arial or, if that is unavailable, a very similar sans serif font type.
-(In the boilerplate, user input text has a different, serif font type
+(In the template, user input text has a different, serif font type
 [\[n8\]](https://github.com/gasparl/expapp/search?q=n8), so that it would be more distinct from the rest of the text in
 the ExpApp – but this is of course just a personal preference.)
 
@@ -356,7 +356,7 @@ absence of a parameter may also be used, for simplicity. For instance,
 (apart from German language and mobile version) that the given ExpApp is
 to be run in demonstration (demo) mode (see under Pretesting).
 
-The boilerplate actually checks for three parameters. The language and
+The template actually checks for three parameters. The language and
 the demo version is indicated just as in the examples above, but the
 device type, which is restricted to either mobile or desktop (and
 excludes, e.g., tablets), is indicated via an “m” parameter’s presence
@@ -374,7 +374,7 @@ categorized as mobile. Instead, one may try detection via the operating
 system information accessible in JS ([\[n14\]](https://github.com/gasparl/expapp/search?q=n14)). Nonetheless, there is no
 standardized or well-established approach for this, and hence no
 guarantee for correct classifications in all cases. One solution, as
-implemented in the boilerplate, is to warn participants in case of wrong
+implemented in the template, is to warn participants in case of wrong
 device detected, but offer them the option to override this and proceed
 with the experiment, in case they are sure that their device type is in
 fact correct and was incorrectly categorized ([\[n15\]](https://github.com/gasparl/expapp/search?q=n15)).
@@ -383,7 +383,7 @@ fact correct and was incorrectly categorized ([\[n15\]](https://github.com/gaspa
 
 In case of multiple language versions of the same experiment, an elegant
 way to store the text content is to have different JS files for each
-language (in the boilerplate, two such files serve as examples,
+language (in the template, two such files serve as examples,
 “*lg\_en.js*” for English, “*lg\_de.js*” for German), where each
 contains a JS “dictionary” object with all the various texts of the
 given ExpApp. On page load, the desired language is detected from the
@@ -470,7 +470,7 @@ allows to use PHP code without any necessity for an in-depth
 understanding of the server’s (or the PHP interpreter’s) workings. Using
 PHP, data is often saved in some type of SQL (Structured Query Language)
 database. However, for ExpApps, a simpler solution is to just save each
-participant’s data as a separate text file. In the boilerplate, files
+participant’s data as a separate text file. In the template, files
 are saved with “.txt” extension, but, depending on the researcher’s
 preference, this can simply be just changed to, e.g., “.csv,” so that it
 would be automatically associated and opened with a spreadsheet
@@ -481,7 +481,7 @@ circumventing the complications of an SQL implementation, it is also
 much easier, during an ongoing experiment, to access and inspect
 incoming individual data as single text files.
 
-The PHP files provided in the boilerplate (“store\_main.php” and
+The PHP files provided in the template (“store\_main.php” and
 “store\_partial.php”) can be used for almost any ExpApp, since
 essentially all they do is just write any text content data sent from JS
 ([\[n22\]](https://github.com/gasparl/expapp/search?q=n22)) to a new file created on the server. One detail to highlight
@@ -529,17 +529,17 @@ stored on the server. Dropouts are typically discussed in the context of
 their biasing effects on surveys, but they may in fact impact behavioral
 data collection as well. Hence, partial data may also be intermittently
 stored on the server during behavioral data collection at a certain
-desired interval (e.g., in the boilerplate, having about hundred trials
+desired interval (e.g., in the template, having about hundred trials
 altogether, at every tenth trial [\[n24\]](https://github.com/gasparl/expapp/search?q=n24)), saving all data up to that
 point.
 
-In the boilerplate, partial data file names start with each given
+In the template, partial data file names start with each given
 participant’s IP address, so that one may easily sort files based on
 that, for an easier overview of potential multiple initiations of the
 ExpApp from the same IP during an ongoing experiment.[^7] Storing each
 new partial file separately is generally superfluous (although one may
 choose to append new partial data to the same file); the PHP code in the
-boilerplate simply overwrites the partial file on each new saving
+template simply overwrites the partial file on each new saving
 ([\[n25\]](https://github.com/gasparl/expapp/search?q=n25)).
 
 ### Complete Data
@@ -548,7 +548,7 @@ At the end of the experiment, the JS function sends the full and complete data t
 file that is separate from the partial files. Here, to absolutely ensure
 that none of the already stored complete data files may be in any way
 erased or damaged, in case of an existing file with the same name, the
-PHP code in the boilerplate appends the new content to the end of the
+PHP code in the template appends the new content to the end of the
 previous content, leaving the latter intact ([\[n26\]](https://github.com/gasparl/expapp/search?q=n26)). The JS function
 on the client side awaits the server response and provides corresponding
 feedback to the participant ([\[n27\]](https://github.com/gasparl/expapp/search?q=n27)). In case of any sort of issue
@@ -574,7 +574,7 @@ under the given column). However, in case of a great amount of such data
 read for humans, as well as unnecessarily increasing file sizes. If
 desired, for subsequent analysis, the JSON format can be easily
 restructured into newly designated columns per each row. (The R script
-for analysis, included in the boilerplate, also contains such a
+for analysis, included in the template, also contains such a
 conversion just to provide an example, using just a couple of lines of
 code.)
 
@@ -598,7 +598,7 @@ underneath, even though there is the arguably more elegant possibility
 of creating clickable (button-like)
 [labels](https://jamesalvarez.co.uk/blog/how-to-make-responsive-likert-scales-in-css-(like-qualtrics)/),
 which also allows easy adjustment for smartphones (by vertical
-alignment, as in the boilerplate [\[n32\]](https://github.com/gasparl/expapp/search?q=n32)).
+alignment, as in the template [\[n32\]](https://github.com/gasparl/expapp/search?q=n32)).
 
 Analog scales can be easily implemented via the input type “range,”
 which provides a certain default slider. For custom design however,
@@ -632,7 +632,7 @@ force participants into answering questions they do not wish to answer),
 and partly because otherwise, participants not wishing to answer may
 provide dishonest or random responses. However, even so, it may happen
 that, to any given question, participants prefer not to give even
-“prefer not to answer” answers, or perhaps they simply forget to make an
+“prefer not íto answer” answers, or perhaps they simply forget to make an
 answer. In that case, a warning may be given when they attempt to submit
 the answers (or continue to the next page). However, one may opt to only
 show the warning once, and allow passing on any subsequent attempt
@@ -654,7 +654,7 @@ are dragging and dropping items ([\[n38\]](https://github.com/gasparl/expapp/sea
 Presenting video or audio, one may ensure that the given media is
 watched or listened to from the beginning to the end, and only once
 ([\[n40\]](https://github.com/gasparl/expapp/search?q=n40)). (In a real experiment, an initial sample audio or video clip
-could precede the main ones – this is omitted from the boilerplate for
+could precede the main ones – this is omitted from the template for
 brevity.)
 
 In the context of online experiments, it is advisable (and costs
@@ -693,12 +693,12 @@ regarding the correctness of responses ([\[n43\]](https://github.com/gasparl/exp
 valid responses (including too slow responses, as well as suspiciously
 fast ones, such as below 150 ms, indicating random responding), the
 entire practice phase may be asked to be repeated ([\[n44\]](https://github.com/gasparl/expapp/search?q=n44)). In the
-boilerplate, there is maximum one repetition only, and at the second
+template, there is maximum one repetition only, and at the second
 completion the participant is allowed to continue regardless of the
 ratio of valid responses. Trial-by-trial feedback, especially regarding
 incorrect and too slow responses, may continue during the main phase of
 the task, depending on the scenario and the researcher’s preferences. In
-the boilerplate, just for the sake of providing a technical example for
+the template, just for the sake of providing a technical example for
 both cases, there is no feedback during the main phase. Furthermore,
 response time limit is only given during the practice phase, and not
 during the main phase.
@@ -710,7 +710,7 @@ record this in online experiments ([\[n45\]](https://github.com/gasparl/expapp/s
 the subsequent analysis (i.e., when an invalid keypress precedes an
 otherwise valid keypress, this latter should not be considered valid
 either, since, evidently, the wrong keypress likely influenced its
-time). Apart from recording, the boilerplate also warns users in case of
+time). Apart from recording, the template also warns users in case of
 an incorrect keypress ([\[n46\]](https://github.com/gasparl/expapp/search?q=n46); particularly useful when no
 trial-by-trial feedback is given otherwise). Finally, one may even
 record, for each user input (such as keypresses), whether it was
@@ -723,7 +723,7 @@ closing the ExpApp were discussed above (section: Unloading the Web
 Page). However, it may also happen that a participant does not close the
 ExpApp but leaves it unattended. For this reason, inactivity may also be
 monitored and related warning may be given ([\[n48\]](https://github.com/gasparl/expapp/search?q=n48)). In the
-boilerplate, for example, a warning message is displayed in case of not
+template, for example, a warning message is displayed in case of not
 pressing either possible response key for over ten seconds. The trials
 are also halted. (Otherwise, if there is a response time limit that
 automatically ends trials, trials would continue even if unattended.)
@@ -738,7 +738,7 @@ appearance of a stimulus), it is
 continual recursive call of the
 [`requestAnimationFrame`](https://developer.mozilla.org/en-US/docs/Web/API/window/requestAnimationFrame)
 JS function, and to execute each display change within a new
-`requestAnimationFrame` call. In the boilerplate, a dedicated set of
+`requestAnimationFrame` call. In the template, a dedicated set of
 functions are provided in a separate “*disptime.js*” file. Using these
 functions, the recursive call may be easily started ([\[n49\]](https://github.com/gasparl/expapp/search?q=n49)) and
 stopped ([\[n50\]](https://github.com/gasparl/expapp/search?q=n50)), and the display change may be easily executed within
@@ -761,7 +761,7 @@ semi-manual testing however, user actions such as keypresses can be
 simulated via dedicated JS functions. This is particularly relevant to
 behavioral data collection, where a lengthy and strenuous examination,
 such as hundreds of trials measuring key responses, can be run with
-automatized simulations of keypresses. For the SST in the boilerplate,
+automatized simulations of keypresses. For the SST in the template,
 the simulation functions for testing are all in the “*sim\_test.js*”
 file. The function executing keypress simulation can be made available
 or unavailable via dedicated functions (`test_on()` and `test_off()`).
@@ -770,7 +770,7 @@ that initiates each upcoming trial ([\[n52\]](https://github.com/gasparl/expapp/
 the entire response time task will run automatically.
 
 For any ExpApp, a simplified, demo version may be created, which can be
-more easily run than the full version. For instance, in the boilerplate,
+more easily run than the full version. For instance, in the template,
 the changes compared to the full version are: (a) there are less trials
 per block (just one per each unique type); (b) none of the questions are
 obligatory in order to proceed to the next page (and there is no alert
@@ -843,7 +843,7 @@ undesired browser ([\[n54\]](https://github.com/gasparl/expapp/search?q=n54)).
 [^4]: Just for those who may for some reason absolutely insist on
     disabling scaling, one potential workaround may be noted here, as it
     seems to work at the moment of writing this, although it is not
-    implemented in the boilerplate and not at all recommended. It
+    implemented in the template and not at all recommended. It
     probably cannot be found anywhere online, because it is contingent
     on having continually identical physical window size on the screen,
     which is a specific case of ExpApps that enforce fullscreen mode
@@ -871,7 +871,7 @@ undesired browser ([\[n54\]](https://github.com/gasparl/expapp/search?q=n54)).
     it is in principle possible that two persons legitimately share the
     same computer.
 
-[^8]: The boilerplate provides an example (Prolific) completion link. If
+[^8]: The template provides an example (Prolific) completion link. If
     one would like to recruit participants without dedicated platforms,
     an easy solution is to show the dedicated (and random) subject ID to
     participants at the end as a completion code, so that the saved data

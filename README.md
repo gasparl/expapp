@@ -1,4 +1,4 @@
-This is a boilerplate project connected to the manuscript "[Creating Web Applications for Online Psychological Experiments: A Hands-On Technical Guide Including a Boilerplate](https://doi.org/10.31234/osf.io/356k2)". It is intended as a boilerplate (template) for creating web applications for online psychological experiments via the HTML/CSS/JavaScript framework from scratch, without any additional software.
+This is a template project connected to the manuscript "[Creating Web Applications for Online Psychological Experiments: A Hands-On Technical Guide Including a template](https://doi.org/10.31234/osf.io/356k2)". It is intended as a template (template) for creating web applications for online psychological experiments via the HTML/CSS/JavaScript framework from scratch, without any additional software.
 
 Here, [TUTORIAL.md](https://gasparl.github.io/expapp/docs/TUTORIAL.html) is the extended and open-source technical tutorial.
 
