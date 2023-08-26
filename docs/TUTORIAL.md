@@ -1,4 +1,4 @@
-# Creating Web Applications for Online Psychological Experiments: A Hands-On Technical Guide Including a template
+# Creating Web Applications for Online Psychological Experiments: A Hands-On Technical Guide Including a Template
 
 ## Table of Contents
 
@@ -632,7 +632,7 @@ force participants into answering questions they do not wish to answer),
 and partly because otherwise, participants not wishing to answer may
 provide dishonest or random responses. However, even so, it may happen
 that, to any given question, participants prefer not to give even
-“prefer not íto answer” answers, or perhaps they simply forget to make an
+“prefer not to answer” answers, or perhaps they simply forget to make an
 answer. In that case, a warning may be given when they attempt to submit
 the answers (or continue to the next page). However, one may opt to only
 show the warning once, and allow passing on any subsequent attempt
