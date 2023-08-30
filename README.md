@@ -18,7 +18,7 @@ Contributions are always very welcome both to the scripts and to the [tutorial](
 
 #### Decision making
 
-To choose what constitutes best practice, or at least good practice, to be implemented in the template (and/or noted in the open-source tutorial), the most important factor is empirical evidence from peer-reviewed research papers. In case of no empirical evidence, relevant web standard specifications (via [MDN](https://developer.mozilla.org/) and/or [W3C](https://www.w3.org/)) may be accepted (unless there is evidence against the contrary, e.g., due to failing sanity checks or known bugs). In case none of these are applicable, the issue should be discussed openly (under a corresponding GitHub issue), with the aim of reaching consensus. If no consensus can be reached, the final decision is made by the project [maintainer](https://gasparl.github.io/).
+To choose what constitutes best practice, or at least good practice, to be implemented in the template (and/or noted in the open-source tutorial), the most important factor is empirical evidence from peer-reviewed research papers. In case of no empirical evidence, relevant web standard specifications (via [MDN](https://developer.mozilla.org/) and/or [W3C](https://www.w3.org/)) may be accepted, unless there is reasonable evidence to the contrary (e.g., failing sanity checks or known bugs). In case none of these are applicable, the question should be discussed openly, under a corresponding GitHub issue, with the aim of reaching consensus. If no consensus can be reached, the final decision is made by the project [maintainer](https://gasparl.github.io/).
 
 ### License
 
