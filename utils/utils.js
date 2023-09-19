@@ -265,9 +265,9 @@ const restrict_media = (() => {
 // function to warn if the device is in portrait mode
 const orientationWarning = (activate) => {
     if (activate) {
-        document.getElementById("rotate-warning").classList.remove("rotate-active");
-    } else {
         document.getElementById("rotate-warning").classList.add("rotate-active");
+    } else {
+        document.getElementById("rotate-warning").classList.remove("rotate-active");
     }
 };
 
