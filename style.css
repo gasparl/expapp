@@ -157,6 +157,35 @@ hr {
     overflow: hidden;
 }
 
+/* warning to use landscape mode, if application */
+/* (use the same logic to ask for portrait mode) */
+#rotate-warning {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.8);
+    color: white;
+    z-index: 9999;
+    text-align: center;
+    vertical-align: middle;
+}
+
+#rotate-warning p {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 24px;
+}
+
+@media (orientation: portrait) {
+    .rotate-active {
+        display: block;
+    }
+}
+
 /* Image and Drag and Drop elements */
 .img {
     height: 140px;

@@ -262,6 +262,15 @@ const restrict_media = (() => {
 })();
 
 
+// function to warn if the device is in portrait mode
+const orientationWarning = (activate) => {
+    if (activate) {
+        document.getElementById("rotate-warning").classList.remove("rotate-active");
+    } else {
+        document.getElementById("rotate-warning").classList.add("rotate-active");
+    }
+};
+
 // calculating the similarity between any two given texts [n35]
 // results are by default in percentage (0-100)
 const similar_text = function(first, second, percent = true) {
