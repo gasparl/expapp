@@ -160,7 +160,6 @@ hr {
 /* warning to use landscape mode, if application */
 /* (use the same logic to ask for portrait mode) */
 #rotate-warning {
-    display: none;
     position: fixed;
     top: 0;
     left: 0;
@@ -179,6 +178,10 @@ hr {
     left: 50%;
     transform: translate(-50%, -50%);
     font-size: 24px;
+}
+
+.rotate-inactive {
+    display: none;
 }
 
 @media (orientation: portrait) {
